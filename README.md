@@ -11,7 +11,7 @@ just link it to your web page and that's it,
 remember you need a canvas where to draw,
 
 ```
-<canvas id='canvas' width='300px' height='300px'>
+<script type='text/javascript' src='wings-0.1.0.min.js'></script>
 ```
 
 and then link it to the view,
