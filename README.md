@@ -2,7 +2,7 @@
 
 usage:
 
-just link it to your web page and that's it,
+link it to your web page,
 
 ```
 <script type='text/javascript' src='wings-0.1.0.min.js'></script>
