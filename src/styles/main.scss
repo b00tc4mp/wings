@@ -1,0 +1,63 @@
+$font-stack: 'Sansation Light', Lobster, arial, cursive;
+
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+
+@font-face {
+	font-family: 'Sansation Light';
+	src: url(../fonts/sansation-light.woff);
+}
+
+* {
+	font-family: $font-stack;
+}
+
+html {
+	height: 100%
+}
+
+body {
+	background-color: white;
+	border : 0px;
+	padding : 0px;
+	margin : 0px;
+}
+
+h1 {
+	font-size: 20px;
+	color: gray;
+	margin : 0px;
+}
+
+h2 {
+	font-size: 20px;
+	color: gray;
+	margin : 0px;
+}
+
+h3 {
+	font-size: 18px;
+	color: gray;
+	margin : 0px;
+}
+
+canvas {
+	background-color: greenyellow;
+}
+
+.col {
+	display: inline-block;
+	width : 300px;
+	_background-color: green;
+}
+
+.thin {
+	clear : both;
+	height : 5px;
+	_background-color: red;
+}
+
+.space {
+	clear : both;
+	height : 50px;
+	_background-color: yellow;
+}
