@@ -4,25 +4,25 @@ usage:
 
 just link it to your web page and that's it,
 
----
+```
 <script type='text/javascript' src='wings.js'></script>
----
+```
 
 remember you need a canvas where to draw,
 
----
+```
 <canvas id='canvas' width='300px' height='300px'>
----
+```
 
 and then link it to the view,
 
----
+```
 var view = new Wings.View(document.getElementById('canvas3'));
----
+```
 
 finally create the component you want,
 
----
+```
 var Box = Wings.Panel.extend({
 			init : function Box() {
 				this._super();
@@ -38,13 +38,13 @@ var Box = Wings.Panel.extend({
 			}
 
 		});
----
+```
 
 and add it to the view,
 
----
+```
 var box = new Box();
 view.add(box);
----
+```
 
 inspect the code examples at http://1nside0ut.com/wings/
