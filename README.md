@@ -5,19 +5,19 @@ usage:
 just link it to your web page and that's it,
 
 ```
-<script type='text/javascript' src='wings.js'></script>
+<script type='text/javascript' src='wings-0.1.0.min.js'></script>
 ```
 
 remember you need a canvas where to draw,
 
 ```
-<script type='text/javascript' src='wings-0.1.0.min.js'></script>
+<canvas id='canvas' width='300px' height='300px'>
 ```
 
 and then link it to the view,
 
 ```
-var view = new Wings.View(document.getElementById('canvas3'));
+var view = new Wings.View(document.getElementById('canvas'));
 ```
 
 finally create the component you want,
