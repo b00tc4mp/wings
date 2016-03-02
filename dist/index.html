@@ -6,8 +6,11 @@
 <link rel='stylesheet' href='styles/main.css'>
 <script type='text/javascript' src='wings-0.1.0.min.js'></script>
 <script type='text/javascript' src='scripts/easy.js'></script>
-<script type='text/javascript' src='scripts/num.js'></script>
 <script type='text/javascript' src='main.js'></script>
+<script type='text/javascript' src='scripts/num.js'></script>
+<script type='text/javascript' src='scripts/body-parts.js'></script>
+<script type='text/javascript' src='scripts/rotating-image.js'></script>
+<script type='text/javascript' src='scripts/reactive-box.js'></script>
 </head>
 <body>
 	<div id='content'>
@@ -19,29 +22,48 @@
 		<h2 class='col'>JavaScript UI framework that draws on canvas, inspired on Java Swing.</h2>
 		<div class='space'></div>
 
-		<canvas id='canvas' width='300px' height='300px'>
+
+		<h3 class='col'>Body parts</h3>
+		<div class='thin'></div>
+		<p class='col'>Example components Body, Eye(s) and Mouth - a few body parts - that can be mouse-dragged on view (try dragging them).</p>
+		<div class='thin'></div>
+		<canvas id='body-parts' width='300px' height='300px'>
 	</canvas>
 		<div class='thin'></div>
-		<h3 class='col'>Animated composition with body parts (try
-			dragging them...)</h3>
+		<p class='col'>
+			Inspect <a href='scripts/body-parts.js' target='_blank'>body-parts.js</a>
+			to see the example's code.
+		</p>
+
 		<div class='space'></div>
 
-		<canvas id='canvas2' width='300px' height='300px'>
+		<h3 class='col'>Rotating image</h3>
+		<div class='thin'></div>
+		<p class='col'>Example component RotatingImage, that loads an
+			image and animates it to rotate.</p>
+		<div class='thin'></div>
+		<canvas id='rotating-image' width='300px' height='300px'>
 	</canvas>
 		<div class='thin'></div>
-		<h3 class='col'>
-			Image loading and rotation (inspect <a href='main.js' target='_blank'>main.js</a>
-			to see full code examples)
-		</h3>
+		<p class='col'>
+			Inspect <a href='scripts/rotating-image.js' target='_blank'>rotating-image.js</a>
+			to see the example's code.
+		</p>
+
 		<div class='space'></div>
 
-		<canvas id='canvas3' width='300px' height='300px'>
+		<h3 class='col'>Reactive box</h3>
+		<div class='thin'></div>
+		<p class='col'>Example component ReactiveBox, that reacts when
+			mouse is clicked on it (try clicking on it).</p>
+		<div class='thin'></div>
+		<canvas id='reactive-box' width='300px' height='300px'>
 			</canvas>
 		<div class='thin'></div>
-		<a href='images/snippet.png' target='_blank'><img
-			src='images/snippet.png' width='300px'></a>
-		<div class='thin'></div>
-		<h3 class='col'>Simple box component (click on code to enlarge)</h3>
+		<p class='col'>
+			Inspect <a href='scripts/reactive-box.js' target='_blank'>reactive-box.js</a>
+			to see the example's code.
+		</p>
 		<div class='space'></div>
 
 		<img src='images/home.svg' width='16px'> <a
