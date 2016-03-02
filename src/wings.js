@@ -8,7 +8,9 @@
 var Wings;
 (function() {
 
-	// shim layer with setTimeout fallback
+	/*
+	 * Safe overriding of requestAnimationFrame.
+	 */
 	window.requestAnimFrame = (function() {
 		return window.requestAnimationFrame
 				|| window.webkitRequestAnimationFrame
@@ -307,6 +309,9 @@ var Wings;
 		});
 	})();
 
+	/*
+	 * Wings's core parts.
+	 */
 	var Component, Behavior, Border, Panel, Image, View, MouseDown, MouseMove, MouseClick, MouseUp, MouseDrag;
 	(function() {
 
