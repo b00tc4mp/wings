@@ -1,4 +1,4 @@
-**Wings** - JavaScript UI library that draws on canvas, inspired on Java Swing.
+**Wings** - JavaScript UI framework that draws on canvas, inspired on Java Swing.
 
 usage:
 
