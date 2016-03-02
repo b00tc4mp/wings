@@ -1,7 +1,7 @@
 {
   "name": "wings",
   "title": "Wings",
-  "description": "JavaScript UI library that draws on canvas, inspired on Java Swing.",
+  "description": "JavaScript UI framework that draws on canvas, inspired on Java Swing.",
   "version": "0.1.0",
   "homepage": "http://1nside0ut.com/wings/",
   "devDependencies": {

@@ -1,7 +1,7 @@
 /*!
  * Wings.
  * 
- * JavaScript UI library that draws on canvas, inspired on Java Swing.
+ * JavaScript UI framework that draws on canvas, inspired on Java Swing.
  * 
  * @author manuelbarzi
  */
