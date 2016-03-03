@@ -1,28 +1,30 @@
-**Wings** - JavaScript UI framework that draws on canvas, inspired on Java Swing.
+![alt tag](http://1nside0ut.com/wings/images/logo.svg) **.js**
 
-usage:
+## JavaScript UI framework that draws on canvas, inspired on Java Swing.
 
-link it to your web page,
+### Usage:
 
-```
+Link it to your web page,
+
+```html
 <script type='text/javascript' src='wings-0.1.0.min.js'></script>
 ```
 
-remember you need a canvas where to draw,
+Remember you need a canvas where to draw,
 
-```
+```html
 <canvas id='canvas' width='300px' height='300px'>
 ```
 
-and then link it to the view,
+Then link that canvas to the view,
 
-```
+```javascript
 var view = new Wings.View(document.getElementById('canvas'));
 ```
 
-finally create the component you want,
+Create the component you want,
 
-```
+```javascript
 var Box = Wings.Panel.extend({
 			init : function Box() {
 				this._super();
@@ -40,11 +42,11 @@ var Box = Wings.Panel.extend({
 		});
 ```
 
-and add it to the view,
+And add it to the view,
 
-```
+```javascript
 var box = new Box();
 view.add(box);
 ```
 
-inspect the code examples at http://1nside0ut.com/wings/
+Inspect the code examples at http://1nside0ut.com/wings/
