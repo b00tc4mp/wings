@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	Wings.run(function() {
+	js.run(function() {
 
 		easy.center(document.getElementById('content'));
 

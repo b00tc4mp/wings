@@ -43,7 +43,7 @@ module.exports = function(grunt) {
 							expand : true,
 							cwd : 'src',
 							src : [ 'favicon.ico', 'logo.svg', 'main.js',
-									'scripts/*', 'fonts/*', 'images/*' ],
+									'scripts/**', 'fonts/*', 'images/*' ],
 							dest : 'dist'
 						} ]
 					}
