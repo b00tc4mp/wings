@@ -49,4 +49,18 @@ var box = new Box();
 view.add(box);
 ```
 
+Locate the component inside the view,
+
+```javascript
+box.location(100, 100);
+```
+
+Add mouse reaction to the component,
+
+```javascript
+box.add(new Wings.MouseDown(function() {
+	alert('my location is ' + box.location());
+}));
+```
+
 Inspect the code demo examples at http://1nside0ut.com/wings/
