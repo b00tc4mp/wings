@@ -59,7 +59,7 @@ Add mouse reaction to the component,
 
 ```javascript
 box.add(new Wings.MouseDown(function() {
-	alert('my location is ' + box.location());
+	alert('My location is ' + box.location());
 }));
 ```
 
