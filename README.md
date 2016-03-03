@@ -49,4 +49,4 @@ var box = new Box();
 view.add(box);
 ```
 
-Inspect the code examples at http://1nside0ut.com/wings/
+Inspect the code demo examples at http://1nside0ut.com/wings/
