@@ -1,5 +1,5 @@
 /*!
- * Slider parts example.
+ * VerticalSlider parts example.
  */
 (function() {
 	'use strict';
@@ -11,9 +11,9 @@
 		view.color('magenta');
 		view.borderColor('transparent');
 
-		var Slider = Wings.Panel.extend({
+		var VerticalSlider = Wings.Panel.extend({
 
-			init : function Slider() {
+			init : function VerticalSlider() {
 
 				this._super();
 
@@ -25,43 +25,43 @@
 				slider.borderColor('cyan');
 				slider.borderWidth(5);
 
-				var Dial = Wings.Panel.extend({
+				var Knob = Wings.Panel.extend({
 
-					init : function Dial() {
+					init : function Knob() {
 
 						this._super();
 
-						var dial = this;
+						var knob = this;
 
-						dial.size(slider.width(), slider.width());
-						dial.color('white');
-						dial.borderColor('transparent');
+						knob.size(slider.width(), slider.width());
+						knob.color('white');
+						knob.borderColor('transparent');
 
-						dial._txt = {
+						knob._txt = {
 							height : 12,
 							value : 0
 						};
 
 						var diff;
 
-						dial.add(new Wings.MouseDown(function(event) {
-							var loc = dial.location();
+						knob.add(new Wings.MouseDown(function(event) {
+							var loc = knob.location();
 							diff = new Wings.Point(event.location.x - loc.x,
 									event.location.y - loc.y);
 						}));
 
-						dial.add(new Wings.MouseDrag(function(event) {
+						knob.add(new Wings.MouseDrag(function(event) {
 							if (diff) {
 								var y, maxY;
-								dial.location(0, y = ((y = event.location.y
+								knob.location(0, y = ((y = event.location.y
 										- diff.y) < 0 ? 0 : (y > (maxY = slider
 										.height()
-										- dial.height()) ? maxY : y)));
-								dial._txt.value = y;
+										- knob.height()) ? maxY : y)));
+								knob._txt.value = y;
 							}
 						}));
 
-						return dial;
+						return knob;
 					},
 
 					draw : function(ctx) {
@@ -77,14 +77,14 @@
 
 				});
 
-				var dial = new Dial();
+				var knob = new Knob();
 
-				slider.add(dial);
+				slider.add(knob);
 			}
 
 		});
 
-		var slider = new Slider();
+		var slider = new VerticalSlider();
 
 		slider.location((view.width() - slider.width()) / 2,
 				(view.height() - slider.height()) / 2);
