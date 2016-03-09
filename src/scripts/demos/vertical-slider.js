@@ -6,7 +6,7 @@
 
 	Wings.run(function() {
 
-		var view = new Wings.View(document.getElementById('slider'));
+		var view = new Wings.View(document.getElementById('vertical-slider'));
 
 		view.color('magenta');
 		view.borderColor('transparent');
