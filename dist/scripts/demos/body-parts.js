@@ -50,6 +50,7 @@
 				var eye = this;
 
 				eye.size(50, 50);
+				eye.color('white');
 				eye.borderColor('transparent');
 
 				var diff;

@@ -578,8 +578,8 @@ var Wings;
 
 			init : function Border() {
 				this._super();
-				this._color = 'gray';
-				this._borderColor = 'black';
+				this._color = 'transparent';
+				this._borderColor = 'magenta';
 				this._borderWidth = 1;
 			},
 
@@ -619,7 +619,7 @@ var Wings;
 
 			init : function Panel() {
 				this._super();
-				this.color('white');
+				this.color('cyan');
 			}
 
 		});
