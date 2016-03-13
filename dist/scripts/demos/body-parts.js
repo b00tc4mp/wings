@@ -1,5 +1,5 @@
 /*!
- * Body parts example.
+ * BodyParts parts example.
  */
 (function() {
 	'use strict';
@@ -11,9 +11,9 @@
 		view.color('cyan');
 		view.borderColor('transparent');
 
-		var Body = Wings.Panel.extend({
+		var BodyParts = Wings.Panel.extend({
 
-			init : function Body() {
+			init : function BodyParts() {
 
 				this._super();
 
@@ -37,163 +37,162 @@
 						body.location(event.location.x - diff.x,
 								event.location.y - diff.y);
 				}));
-			}
 
-		});
+				var Eye = Wings.Panel.extend({
 
-		var Eye = Wings.Panel.extend({
-
-			init : function Eye() {
-
-				this._super();
-
-				var eye = this;
-
-				eye.size(50, 50);
-				eye.color('white');
-				eye.borderColor('transparent');
-
-				var diff;
-
-				eye.add(new Wings.MouseDown(function(event) {
-					var loc = eye.location();
-					diff = new Wings.Point(event.location.x - loc.x,
-							event.location.y - loc.y);
-				}));
-
-				eye.add(new Wings.MouseDrag(function(event) {
-					if (diff)
-						eye.location(event.location.x - diff.x,
-								event.location.y - diff.y);
-				}));
-
-				var iris = new Wings.Panel();
-
-				iris.location(0, 30);
-				iris.size(20, 20);
-				iris.color('black');
-				iris.borderColor('transparent');
-
-				var loc = iris.location(), i = 0, step = 1;
-				setInterval(function() {
-					iris.location(loc.x + i, loc.y);
-					view.refresh();
-					i += step;
-					if (i === eye.width() - iris.width())
-						step = -1;
-					else if (i === -1)
-						step = 1;
-				}, 30);
-
-				eye.add(iris);
-
-				return eye;
-			}
-
-		});
-
-		var Mouth = Wings.Panel.extend({
-
-			init : function Mouth() {
-
-				this._super();
-
-				var mouth = this;
-
-				mouth.size(50, 50);
-				mouth.color('transparent');
-				mouth.borderColor('transparent');
-
-				var diff;
-
-				mouth.add(new Wings.MouseDown(function(event) {
-					var loc = mouth.location();
-					diff = new Wings.Point(event.location.x - loc.x,
-							event.location.y - loc.y);
-				}));
-
-				mouth.add(new Wings.MouseDrag(function(event) {
-					if (diff)
-						mouth.location(event.location.x - diff.x,
-								event.location.y - diff.y);
-				}));
-
-				var Lip = Wings.Panel.extend({
-
-					init : function Lip() {
+					init : function Eye() {
 
 						this._super();
 
-						var lip = this;
+						var eye = this;
 
-						lip.size(mouth.width(), mouth.height() / 3);
-						lip.color('magenta');
-						lip.borderColor('transparent');
+						eye.size(50, 50);
+						eye.color('white');
+						eye.borderColor('transparent');
+
+						var diff;
+
+						eye.add(new Wings.MouseDown(function(event) {
+							var loc = eye.location();
+							diff = new Wings.Point(event.location.x - loc.x,
+									event.location.y - loc.y);
+						}));
+
+						eye.add(new Wings.MouseDrag(function(event) {
+							if (diff)
+								eye.location(event.location.x - diff.x,
+										event.location.y - diff.y);
+						}));
+
+						var iris = new Wings.Panel();
+
+						iris.location(0, 30);
+						iris.size(20, 20);
+						iris.color('black');
+						iris.borderColor('transparent');
+
+						var loc = iris.location(), i = 0, step = 1;
+						setInterval(function() {
+							iris.location(loc.x + i, loc.y);
+							view.refresh();
+							i += step;
+							if (i === eye.width() - iris.width())
+								step = -1;
+							else if (i === -1)
+								step = 1;
+						}, 30);
+
+						eye.add(iris);
+
+						return eye;
 					}
 
 				});
 
-				var lip = new Lip();
+				var eye = new Eye();
 
-				lip.location((-lip.width() + mouth.width()) / 2, 0);
+				eye.location(-eye.width() + body.width() / 3, eye.height());
 
-				mouth.add(lip);
+				body.add(eye);
 
-				lip = new Lip();
+				eye = new Eye();
 
-				lip.location((-lip.width() + mouth.width()) / 2, mouth.height()
-						- lip.height());
+				eye.location(body.width() * 2 / 3, eye.height() / 2);
 
-				var size = mouth.size(), step = -1, i = 0;
+				body.add(eye);
 
-				mouth.add(lip);
+				var Mouth = Wings.Panel.extend({
 
-				setInterval(function() {
+					init : function Mouth() {
 
-					mouth.size(size.width, size.height + i);
+						this._super();
 
-					lip.location((-lip.width() + mouth.width()) / 2, mouth
-							.height()
-							- lip.height());
+						var mouth = this;
 
-					view.refresh();
+						mouth.size(50, 50);
+						mouth.color('transparent');
+						mouth.borderColor('transparent');
 
-					i += step;
-					if (i < -lip.height())
-						step = 1;
-					else if (i > 0)
-						step = -1;
-				}, 20);
+						var diff;
 
-				return mouth;
+						mouth.add(new Wings.MouseDown(function(event) {
+							var loc = mouth.location();
+							diff = new Wings.Point(event.location.x - loc.x,
+									event.location.y - loc.y);
+						}));
+
+						mouth.add(new Wings.MouseDrag(function(event) {
+							if (diff)
+								mouth.location(event.location.x - diff.x,
+										event.location.y - diff.y);
+						}));
+
+						var Lip = Wings.Panel.extend({
+
+							init : function Lip() {
+
+								this._super();
+
+								var lip = this;
+
+								lip.size(mouth.width(), mouth.height() / 3);
+								lip.color('magenta');
+								lip.borderColor('transparent');
+							}
+
+						});
+
+						var lip = new Lip();
+
+						lip.location((-lip.width() + mouth.width()) / 2, 0);
+
+						mouth.add(lip);
+
+						lip = new Lip();
+
+						lip.location((-lip.width() + mouth.width()) / 2, mouth
+								.height()
+								- lip.height());
+
+						var size = mouth.size(), step = -1, i = 0;
+
+						mouth.add(lip);
+
+						setInterval(function() {
+
+							mouth.size(size.width, size.height + i);
+
+							lip.location((-lip.width() + mouth.width()) / 2,
+									mouth.height() - lip.height());
+
+							view.refresh();
+
+							i += step;
+							if (i < -lip.height())
+								step = 1;
+							else if (i > 0)
+								step = -1;
+						}, 20);
+
+						return mouth;
+					}
+
+				});
+
+				var mouth = new Mouth();
+
+				mouth.location(body.width() / 2, body.height() - mouth.height()
+						* 3 / 2);
+
+				body.add(mouth);
 			}
 
 		});
 
-		var body = new Body();
+		var body = new BodyParts();
 
 		body.location((view.width() - body.width()) / 2, (view.height() - body
 				.height()) / 2);
-
-		var eye = new Eye();
-
-		eye.location(-eye.width() + body.width() / 3, eye.height());
-
-		body.add(eye);
-
-		eye = new Eye();
-
-		eye.location(body.width() * 2 / 3, eye.height() / 2);
-
-		body.add(eye);
-
-		var mouth = new Mouth();
-
-		mouth
-				.location(body.width() / 2, body.height() - mouth.height() * 3
-						/ 2);
-
-		body.add(mouth);
 
 		view.add(body);
 
