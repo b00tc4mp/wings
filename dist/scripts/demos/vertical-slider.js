@@ -1,5 +1,5 @@
 /*!
- * VerticalSlider parts example.
+ * Vertical slider parts example.
  */
 (function() {
 	'use strict';

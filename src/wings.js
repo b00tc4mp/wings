@@ -312,7 +312,7 @@ var Wings;
 	/*
 	 * Wings's core parts.
 	 */
-	var Component, Behavior, Border, Panel, Image, View, MouseDown, MouseMove, MouseClick, MouseUp, MouseDrag;
+	var Component, Behavior, Border, Panel, Image, View, MouseDown, MouseMove, MouseClick, MouseUp, MouseDrag, KeyDown, KeyUp, KeyPress;
 	(function() {
 
 		/*
@@ -329,6 +329,8 @@ var Wings;
 				this._behaviors = [];
 				this._visible = true;
 			},
+
+			// Mouse event handling.
 
 			_isPointed : function(p) {
 				var pos = this.absoluteLocation(), pointed = pos.x <= p.x
@@ -417,9 +419,59 @@ var Wings;
 				}
 			},
 
+			// Key event handling.
+
+			_keyEvent : function(behavior, event) {
+				if (this._behaviors.length > 0) {
+					for ( var i in this._behaviors) {
+						var b = this._behaviors[i];
+						if (b instanceof behavior) {
+							b.action(event);
+						}
+					}
+				}
+			},
+
+			_keyDown : function(event) {
+				if (this.visible()) {
+					this._keyEvent(KeyDown, event);
+					if (this._children.length > 0) {
+						for ( var i in this._children) {
+							this._children[i]._keyDown(event);
+						}
+					}
+				}
+			},
+
+			_keyUp : function(event) {
+				if (this.visible()) {
+					this._keyEvent(KeyUp, event);
+					if (this._children.length > 0) {
+						for ( var i in this._children) {
+							this._children[i]._keyUp(event);
+						}
+					}
+				}
+			},
+
+			_keyPress : function(event) {
+				if (this.visible()) {
+					this._keyEvent(KeyPress, event);
+					if (this._children.length > 0) {
+						for ( var i in this._children) {
+							this._children[i]._keyPress(event);
+						}
+					}
+				}
+			},
+
+			// Default string representation.
+
 			toString : function() {
 				return js.typeOf(this);
 			},
+
+			// Dimensions.
 
 			width : function(width) {
 				if (js.notDefined(width))
@@ -440,6 +492,8 @@ var Wings;
 				this.height(height);
 			},
 
+			// Child nesting.
+
 			add : function(that) {
 
 				assert.isType(that, [ Component, Behavior ]);
@@ -454,6 +508,8 @@ var Wings;
 				return that;
 			},
 
+			// Visibility.
+
 			visible : function(visible) {
 
 				if (js.notDefined(visible))
@@ -462,6 +518,8 @@ var Wings;
 				this._visible = visible;
 
 			},
+
+			// Location.
 
 			/*
 			 * Sets / gets the location on component.
@@ -484,10 +542,6 @@ var Wings;
 
 			},
 
-			parent : function() {
-				return this._parent;
-			},
-
 			absoluteLocation : function() {
 				if (this._parent) {
 					return Point.sum(this.location(), this._parent
@@ -495,6 +549,18 @@ var Wings;
 				}
 				return this.location();
 			},
+
+			// Association.
+
+			parent : function() {
+				return this._parent;
+			},
+
+			children : function() {
+				return this._children;
+			},
+
+			// Drawing.
 
 			_draw : function(ctx) {
 				var loc = this.location();
@@ -519,17 +585,9 @@ var Wings;
 		}
 
 		/*
-		 * View Event.
-		 */
-		function ViewEvent(event, offset) {
-			this.location = new Point(event.clientX - offset.x, event.clientY
-					- offset.y);
-		}
-
-		/*
 		 * Behavior.
 		 * 
-		 * @param action the behavior associated action
+		 * @param action, the behavior associated action.
 		 */
 		Behavior = Class.extend({
 			init : function Behavior(action) {
@@ -537,7 +595,7 @@ var Wings;
 			}
 		});
 
-		// mouse behaviors
+		// Mouse behaviors.
 
 		MouseDown = Behavior.extend({
 			init : function MouseDown(action) {
@@ -569,7 +627,27 @@ var Wings;
 			}
 		});
 
-		// comps
+		// Key behaviors.
+
+		KeyDown = Behavior.extend({
+			init : function KeyDown(action) {
+				this._super(action);
+			}
+		});
+
+		KeyUp = Behavior.extend({
+			init : function KeyUp(action) {
+				this._super(action);
+			}
+		});
+
+		KeyPress = Behavior.extend({
+			init : function KeyPressed(action) {
+				this._super(action);
+			}
+		});
+
+		// Base components.
 
 		/*
 		 * Border.
@@ -641,26 +719,6 @@ var Wings;
 		});
 
 		/*
-		 * Mouse Reaction.
-		 */
-		function MouseReaction(action, interval) {
-			this._action = action;
-			this._interval = interval;
-			this._before = Date.now();
-			this._now = null;
-		}
-
-		MouseReaction.prototype = {
-			react : function(arg) {
-				this._now = Date.now();
-				if (this._now - this._before > this._interval) {
-					this._action(arg);
-					this._before = this._now;
-				}
-			}
-		};
-
-		/*
 		 * View.
 		 */
 		View = Panel.extend({
@@ -669,7 +727,7 @@ var Wings;
 
 				this._super();
 
-				var self = this;
+				var view = this;
 
 				this.width(canvas.width);
 				this.height(canvas.height);
@@ -677,61 +735,76 @@ var Wings;
 				this._ctx = canvas.getContext('2d');
 
 				/*
-				 * events handling through view component's tree.
+				 * Mouse Event.
+				 */
+				function MouseEvent(event) {
+					var offset = elem.absoluteLocation(canvas);
+					this.location = new Point(event.clientX - offset.x,
+							event.clientY - offset.y);
+				}
+
+				/*
+				 * Mouse event handling through view component's tree.
 				 */
 
-				var mouseMove = new MouseReaction(function(event) {
-					self._mouseMove(new ViewEvent(event, elem
-							.absoluteLocation(canvas)));
-					self.refresh();
-				}, -1);
-
 				window.addEventListener('mousemove', function(event) {
-					mouseMove.react(event);
+					view._mouseMove(new MouseEvent(event));
+					view.refresh();
 				});
-
-				var mouseDown = new MouseReaction(function(event) {
-					self._mouseDown(new ViewEvent(event, elem
-							.absoluteLocation(canvas)));
-					self.refresh();
-				}, -1);
 
 				window.addEventListener('mousedown', function(event) {
-					mouseDown.react(event);
+					view._mouseDown(new MouseEvent(event));
+					view.refresh();
 				});
-
-				var mouseUp = new MouseReaction(function(event) {
-					self._mouseUp(new ViewEvent(event, elem
-							.absoluteLocation(canvas)));
-					self.refresh();
-				}, -1);
 
 				window.addEventListener('mouseup', function(event) {
-					mouseUp.react(event);
+					view._mouseUp(new MouseEvent(event));
+					view.refresh();
 				});
 
-				var mouseClick = new MouseReaction(function(event) {
-					self._mouseClick(new ViewEvent(event, elem
-							.absoluteLocation(canvas)));
-					self.refresh();
-				}, -1);
-
 				window.addEventListener('click', function(event) {
-					mouseClick.react(event);
+					view._mouseClick(new MouseEvent(event));
+					view.refresh();
 				});
 
 				setTimeout(function() {
-					self.refresh();
+					view.refresh();
 				}, 100);
+
+				/*
+				 * Key Event.
+				 */
+				function KeyEvent(event) {
+					this.key = event.which || event.keyCode;
+				}
+
+				/*
+				 * Key event handling through view component's tree.
+				 */
+
+				window.addEventListener('keydown', function(event) {
+					view._keyDown(new KeyEvent(event));
+					view.refresh();
+				});
+
+				window.addEventListener('keyup', function(event) {
+					view._keyUp(new KeyEvent(event));
+					view.refresh();
+				});
+
+				window.addEventListener('keypress', function(event) {
+					view._keyPress(new KeyEvent(event));
+					view.refresh();
+				});
 
 			},
 
 			refresh : function() {
 				if (js.empty(arguments)) {
-					var self = this;
+					var view = this;
 					window.requestAnimFrame(function() {
-						self._ctx.clearRect(0, 0, self.width(), self.height());
-						self._draw(self._ctx);
+						view._ctx.clearRect(0, 0, view.width(), view.height());
+						view._draw(view._ctx);
 					});
 				}
 			}
@@ -740,7 +813,7 @@ var Wings;
 
 	})();
 
-	// globalization
+	// Globalization.
 
 	Wings = {
 		run : js.run,
@@ -758,7 +831,10 @@ var Wings;
 		MouseMove : MouseMove,
 		MouseClick : MouseClick,
 		MouseUp : MouseUp,
-		MouseDrag : MouseDrag
+		MouseDrag : MouseDrag,
+		KeyDown : KeyDown,
+		KeyUp : KeyUp,
+		KeyPress : KeyPress
 	};
 
 })();

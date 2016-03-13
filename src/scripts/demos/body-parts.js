@@ -1,5 +1,5 @@
 /*!
- * BodyParts parts example.
+ * Body parts parts example.
  */
 (function() {
 	'use strict';
