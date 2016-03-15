@@ -4,13 +4,13 @@
 
 #### Usage:
 
-Link it to your web page,
+Link Wings to your web page,
 
 ```html
 <script type='text/javascript' src='wings-0.1.0.min.js'></script>
 ```
 
-Remember you need a canvas where to draw,
+Remember you need a canvas to draw on,
 
 ```html
 <canvas id='canvas' width='300px' height='300px'>
@@ -22,7 +22,7 @@ Then link that canvas to the view,
 var view = new Wings.View(document.getElementById('canvas'));
 ```
 
-Create the component you want,
+Create a component you want,
 
 ```javascript
 var Box = Wings.Panel.extend({
@@ -42,20 +42,20 @@ var Box = Wings.Panel.extend({
 		});
 ```
 
-And add it to the view,
+Add it to the view,
 
 ```javascript
 var box = new Box();
 view.add(box);
 ```
 
-Locate the component inside the view,
+Locate it inside the view,
 
 ```javascript
 box.location(100, 100);
 ```
 
-Add mouse reaction to the component,
+Add mouse reaction to it,
 
 ```javascript
 box.add(new Wings.MouseDown(function() {
