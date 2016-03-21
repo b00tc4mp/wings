@@ -5,6 +5,26 @@ var easy;
 (function() {
 	easy = {
 
+		visible : function(visible, elem) {
+			if (visible === undefined)
+				return elem.style.display !== 'none';
+			var style = elem.style;
+			if (style.display !== 'none')
+				elem.style._display = style.display;
+			if (visible)
+				if (elem.style._display && elem.style._display !== 'none') {
+					style.display = elem.style._display;
+				} else {
+					style.display = 'block';
+				}
+			else {
+				if (style.display && style.display !== 'none') {
+					elem.style._display = style.display;
+				}
+				style.display = 'none';
+			}
+		},
+
 		center : function(elem) {
 			var outer = document.createElement('div');
 			outer

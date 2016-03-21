@@ -3,7 +3,11 @@
 
 	js.run(function() {
 
-		easy.center(document.getElementById('content'));
+		var content = document.getElementById('content');
+
+		easy.center(content);
+
+		easy.visible(true, content);
 
 	});
 
