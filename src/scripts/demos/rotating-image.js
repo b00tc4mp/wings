@@ -50,10 +50,10 @@
 
 		});
 
-		var p = new RotatingImage('images/wheel.png');
-		p.location(150, 150);
+		var img = new RotatingImage('images/wheel.png');
+		img.location(150, 150);
 
-		view.add(p);
+		view.add(img);
 
 	});
 })();
