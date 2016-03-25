@@ -324,7 +324,7 @@ var Wings;
 
 				this._parent = undefined;
 				this._coords = new Rectangle();
-				this._mouse = new MouseState();
+				this._mouse = {};
 				this._children = [];
 				this._behaviors = [];
 				this._visible = true;
@@ -578,11 +578,6 @@ var Wings;
 			}
 
 		});
-
-		function MouseState() {
-			this.pressed = false;
-			this.dragging = false;
-		}
 
 		/*
 		 * Behavior.
