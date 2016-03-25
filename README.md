@@ -2,7 +2,7 @@
 
 #### JavaScript UI framework that draws on canvas, inspired on Java Swing.
 
-#### Usage:
+##### Usage:
 
 Link Wings to your web page,
 
