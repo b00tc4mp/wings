@@ -4,6 +4,11 @@
   "description": "JavaScript UI framework that draws on canvas, inspired on Java Swing.",
   "version": "0.1.0",
   "homepage": "http://1nside0ut.com/wings/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1nside0ut/wings.git"
+  },
+  "license": "MIT",
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-clean": "^1.0.0",
