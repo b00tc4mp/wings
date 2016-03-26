@@ -1,19 +1,19 @@
 /*!
- * Body parts parts example.
+ * Moving body demo.
  */
 (function() {
 	'use strict';
 
 	Wings.run(function() {
 
-		var view = new Wings.View(document.getElementById('body-parts'));
+		var view = new Wings.View(document.getElementById('moving-body'));
 
 		view.color('cyan');
 		view.borderColor('transparent');
 
-		var BodyParts = Wings.Panel.extend({
+		var MovingBody = Wings.Panel.extend({
 
-			init : function BodyParts() {
+			init : function MovingBody() {
 
 				this._super();
 
@@ -189,7 +189,7 @@
 
 		});
 
-		var body = new BodyParts();
+		var body = new MovingBody();
 
 		body.location((view.width() - body.width()) / 2, (view.height() - body
 				.height()) / 2);
