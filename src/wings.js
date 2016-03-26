@@ -322,7 +322,6 @@ var Wings;
 
 			init : function Component() {
 
-				this._parent = undefined;
 				this._coords = new Rectangle();
 				this._mouse = {};
 				this._children = [];
