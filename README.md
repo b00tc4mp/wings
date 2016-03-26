@@ -1,4 +1,4 @@
-![alt tag](http://1nside0ut.com/wings/images/logo.svg)
+![alt tag](https://raw.githubusercontent.com/1nside0ut/wings/master/dist/images/logo.svg)
 
 #### JavaScript UI framework that draws on canvas, inspired on Java Swing.
 
