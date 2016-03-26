@@ -1,4 +1,4 @@
-![alt tag](dist/images/logo.svg?raw=true "WingsJS")
+![Alt text](dist/images/logo.svg?raw=true "WingsJS")
 
 #### JavaScript UI framework that draws on canvas, inspired on Java Swing.
 
