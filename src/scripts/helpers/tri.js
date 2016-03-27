@@ -1,7 +1,9 @@
 /*!
  * TriJS.
  * 
- * @author manuelbarzi,
+ * JavaScript library that provides 3D operations.
+ * 
+ * @author manuelbarzi
  */
 var Tri;
 (function() {
