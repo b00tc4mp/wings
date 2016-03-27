@@ -1,5 +1,5 @@
 /*!
- * Vertical slider example.
+ * Vertical slider demo.
  */
 (function() {
 	'use strict';

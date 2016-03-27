@@ -1,5 +1,5 @@
 /*!
- * Reactive box example.
+ * Reactive box demo.
  */
 (function() {
 	'use strict';

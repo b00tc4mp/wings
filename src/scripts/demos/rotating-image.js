@@ -1,5 +1,5 @@
 /*!
- * Rotating image example.
+ * Rotating image demo.
  */
 (function() {
 	'use strict';

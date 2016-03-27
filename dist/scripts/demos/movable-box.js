@@ -1,5 +1,5 @@
 /*!
- * Movable box example.
+ * Movable box demo.
  */
 (function() {
 	'use strict';
