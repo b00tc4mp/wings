@@ -1,4 +1,4 @@
-/**
+/*!
  * TriJS.
  * 
  * @author manuelbarzi,
