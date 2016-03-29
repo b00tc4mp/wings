@@ -1,4 +1,4 @@
-/*!
+/**
  * Reactive box demo.
  */
 (function() {
@@ -11,6 +11,12 @@
 		view.color('cyan');
 		view.borderColor('transparent');
 
+		/**
+		 * ReactiveBox
+		 * 
+		 * A box that reacts when mouse is clicked on it.
+		 * 
+		 */
 		var ReactiveBox = Wings.Panel.extend({
 			init : function ReactiveBox(msg) {
 				this._super();
@@ -22,7 +28,7 @@
 			},
 			draw : function(ctx) {
 				ctx.beginPath();
-				ctx.lineWidth = '10';
+				ctx.lineWidth = '5';
 				ctx.strokeStyle = this.color();
 				ctx.rect(0, 0, this.width(), this.height());
 				ctx.stroke();

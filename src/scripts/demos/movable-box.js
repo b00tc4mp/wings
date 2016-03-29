@@ -1,5 +1,6 @@
-/*!
+/**
  * Movable box demo.
+ * 
  */
 (function() {
 	'use strict';
@@ -11,6 +12,13 @@
 		view.color('cyan');
 		view.borderColor('transparent');
 
+		/**
+		 * MovableBox
+		 * 
+		 * Component that moves with the keyboard: 'W' moves UP, 'S' moves DOWN,
+		 * 'A' moves LEFT, and 'D' moves RIGHT
+		 * 
+		 */
 		var MovableBox = Wings.Panel.extend({
 
 			init : function MovableBox() {

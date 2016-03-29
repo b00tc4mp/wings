@@ -37,9 +37,14 @@ p {
 canvas {
   background-color: greenyellow; }
 
-.col {
+.tit {
   display: inline-block;
   width: 400px;
+  _background-color: green; }
+
+.col {
+  display: inline-block;
+  width: 300px;
   _background-color: green; }
 
 .thin {

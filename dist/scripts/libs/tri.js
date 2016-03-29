@@ -1,4 +1,4 @@
-/*!
+/**
  * TriJS.
  * 
  * JavaScript library that provides 3D operations.

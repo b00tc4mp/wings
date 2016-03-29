@@ -1,5 +1,6 @@
-/*!
+/**
  * Moving body demo.
+ * 
  */
 (function() {
 	'use strict';
@@ -11,6 +12,12 @@
 		view.color('cyan');
 		view.borderColor('transparent');
 
+		/**
+		 * MovingBody
+		 * 
+		 * Animated body the parts of which can be mouse-dragged.
+		 * 
+		 */
 		var MovingBody = Wings.Panel.extend({
 
 			init : function MovingBody() {

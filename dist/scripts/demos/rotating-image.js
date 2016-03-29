@@ -1,5 +1,6 @@
-/*!
+/**
  * Rotating image demo.
+ * 
  */
 (function() {
 	'use strict';
@@ -11,9 +12,22 @@
 		view.color('magenta');
 		view.borderColor('transparent');
 
+		/**
+		 * RotatingImage
+		 * 
+		 * Reusable component that loads an image and rotates it at a specified
+		 * speed.
+		 * 
+		 * @param url
+		 *            the url of the image
+		 * @param speed
+		 *            the rotational speed in º/ms (degrees x milliseconds)
+		 *            
+		 */
+
 		var RotatingImage = Wings.Panel.extend({
 
-			init : function RotatingImage(url) {
+			init : function RotatingImage(url, speed) {
 
 				this._super();
 
@@ -32,7 +46,7 @@
 					if (self._angle > 360)
 						self._angle = 0;
 					view.refresh();
-				}, 10);
+				}, 1 / speed);
 
 			},
 
@@ -50,8 +64,9 @@
 
 		});
 
-		var img = new RotatingImage('images/wheel.png');
-		img.location(150, 150);
+		var img = new RotatingImage('images/wheel.png', 1 / 10);
+
+		img.location(view.width() / 2, view.height() / 2);
 
 		view.add(img);
 

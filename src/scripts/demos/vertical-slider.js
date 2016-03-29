@@ -1,5 +1,6 @@
-/*!
+/**
  * Vertical slider demo.
+ * 
  */
 (function() {
 	'use strict';
@@ -11,6 +12,12 @@
 		view.color('magenta');
 		view.borderColor('transparent');
 
+		/**
+		 * VerticalSlider
+		 * 
+		 * Component that updates its current value when sliding it.
+		 * 
+		 */
 		var VerticalSlider = Wings.Panel.extend({
 
 			init : function VerticalSlider() {

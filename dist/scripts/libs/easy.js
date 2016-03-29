@@ -1,4 +1,4 @@
-/*!
+/**
  * Easy HTML manipulation.
  */
 var easy;

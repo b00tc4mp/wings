@@ -1,5 +1,6 @@
-/*!
+/**
  * Cube 3D demo.
+ * 
  */
 (function() {
 	'use strict';
@@ -11,6 +12,12 @@
 		view.color('magenta');
 		view.borderColor('transparent');
 
+		/**
+		 * Cube3D
+		 * 
+		 * Component that renders a cube in 3D and rotates it.
+		 * 
+		 */
 		var Cube3D = Wings.Panel.extend({
 
 			init : function Cube3D() {
