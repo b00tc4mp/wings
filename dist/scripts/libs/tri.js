@@ -22,28 +22,28 @@ var Tri;
 			return JSON.stringify(this);
 		},
 
-		rotX : function(deg) {
-			Tri.rotX(deg, this);
+		rotX : function(ang) {
+			Tri.rotX(ang, this);
 		},
 
-		rotY : function(deg) {
-			Tri.rotY(deg, this);
+		rotY : function(ang) {
+			Tri.rotY(ang, this);
 		},
 
-		rotZ : function(deg) {
-			Tri.rotZ(deg, this);
+		rotZ : function(ang) {
+			Tri.rotZ(ang, this);
 		},
 
-		transX : function(dx) {
-			Tri.transX(dx, this);
+		transX : function(dis) {
+			Tri.transX(dis, this);
 		},
 
-		transY : function(dy) {
-			Tri.transY(dy, this);
+		transY : function(dis) {
+			Tri.transY(dis, this);
 		},
 
-		transZ : function(dz) {
-			Tri.transZ(dz, this);
+		transZ : function(dis) {
+			Tri.transZ(dis, this);
 		}
 
 	};
@@ -52,10 +52,10 @@ var Tri;
 		return Math.PI * deg / 180;
 	};
 
-	Tri._rot = function(deg) {
+	Tri._rot = function(ang) {
 		return {
-			sin : Math.sin(Tri._rad(deg)),
-			cos : Math.cos(Tri._rad(deg))
+			sin : Math.sin(Tri._rad(ang)),
+			cos : Math.cos(Tri._rad(ang))
 		};
 	};
 
@@ -77,28 +77,28 @@ var Tri;
 		p.y = x * r.sin + y * r.cos;
 	};
 
-	Tri.rotX = function(deg, p) {
-		Tri._rotX(Tri._rot(deg), p);
+	Tri.rotX = function(ang, p) {
+		Tri._rotX(Tri._rot(ang), p);
 	};
 
-	Tri.rotY = function(deg, p) {
-		Tri._rotY(Tri._rot(deg), p);
+	Tri.rotY = function(ang, p) {
+		Tri._rotY(Tri._rot(ang), p);
 	};
 
-	Tri.rotZ = function(deg, p) {
-		Tri._rotZ(Tri._rot(deg), p);
+	Tri.rotZ = function(ang, p) {
+		Tri._rotZ(Tri._rot(ang), p);
 	};
 
-	Tri.transX = function(dx, p) {
-		p.x += dx;
+	Tri.transX = function(dis, p) {
+		p.x += dis;
 	};
 
-	Tri.transY = function(dy, p) {
-		p.y += dy;
+	Tri.transY = function(dis, p) {
+		p.y += dis;
 	};
 
-	Tri.transZ = function(dz, p) {
-		p.z += dz;
+	Tri.transZ = function(dis, p) {
+		p.z += dis;
 	};
 
 	Tri.trans = function(dx, dy, dz, p) {
@@ -109,37 +109,37 @@ var Tri;
 
 	// arrays
 
-	Tri.rotArrayX = function(deg, arr) {
-		var rot = Tri._rot(deg);
+	Tri.rotArrayX = function(ang, arr) {
+		var rot = Tri._rot(ang);
 		for ( var i in arr)
 			Tri._rotX(rot, arr[i]);
 	};
 
-	Tri.rotArrayY = function(deg, arr) {
-		var rot = Tri._rot(deg);
+	Tri.rotArrayY = function(ang, arr) {
+		var rot = Tri._rot(ang);
 		for ( var i in arr)
 			Tri._rotY(rot, arr[i]);
 	};
 
-	Tri.rotArrayZ = function(deg, arr) {
-		var rot = Tri._rot(deg);
+	Tri.rotArrayZ = function(ang, arr) {
+		var rot = Tri._rot(ang);
 		for ( var i in arr)
 			Tri._rotZ(rot, arr[i]);
 	};
 
-	Tri.transArrayX = function(dx, arr) {
+	Tri.transArrayX = function(dis, arr) {
 		for ( var i in arr)
-			Tri.transX(dx, arr[i]);
+			Tri.transX(dis, arr[i]);
 	};
 
-	Tri.transArrayY = function(dy, arr) {
+	Tri.transArrayY = function(dis, arr) {
 		for ( var i in arr)
-			Tri.transY(dy, arr[i]);
+			Tri.transY(dis, arr[i]);
 	};
 
-	Tri.transArrayZ = function(dz, arr) {
+	Tri.transArrayZ = function(dis, arr) {
 		for ( var i in arr)
-			Tri.transZ(dz, arr[i]);
+			Tri.transZ(dis, arr[i]);
 	};
 
 	Tri.transArray = function(dx, dy, dz, arr) {
