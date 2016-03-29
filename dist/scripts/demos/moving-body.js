@@ -15,7 +15,7 @@
 		/**
 		 * MovingBody
 		 * 
-		 * Animated body the parts of which can be mouse-dragged.
+		 * Animated body parts that can be mouse-dragged.
 		 * 
 		 */
 		var MovingBody = Wings.Panel.extend({
