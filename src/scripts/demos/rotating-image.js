@@ -21,8 +21,8 @@
 		 * @param url
 		 *            the url of the image
 		 * @param speed
-		 *            the rotational speed in º/ms (degrees x milliseconds)
-		 *            
+		 *            the rotational speed in deg/ms (degrees x milliseconds)
+		 * 
 		 */
 
 		var RotatingImage = Wings.Panel.extend({
