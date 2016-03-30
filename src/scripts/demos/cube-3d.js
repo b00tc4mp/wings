@@ -88,7 +88,8 @@
 
 		var cube = new Cube3D();
 
-		cube.location(150, 150);
+		cube.location((view.width() - cube.width()) / 2, (view.height() - cube
+				.height()) / 2);
 
 		view.add(cube);
 
