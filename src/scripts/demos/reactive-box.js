@@ -36,7 +36,7 @@
 
 		});
 
-		var box = new ReactiveBox('hey! why did you clicked on me!?');
+		var box = new ReactiveBox('hey! you clicked on me!');
 		box.location((view.width() - box.width()) / 2, (view.height() - box
 				.height()) / 2);
 
