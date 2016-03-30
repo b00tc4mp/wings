@@ -1,7 +1,7 @@
 /**
  * TriJS.
  * 
- * JavaScript library that provides 3D operations.
+ * JavaScript 3D operations.
  * 
  * @author manuelbarzi
  */
