@@ -1,11 +1,11 @@
 /**
- * _titl
+ * WingsJS
  * 
- * _desc
+ * JavaScript UI framework that draws on canvas, inspired on Java Swing.
  * 
- * @version _ver
+ * @version 0.1.0
  * 
- * @author _auth
+ * @author manuelbarzi
  */
 var Wings;
 (function() {

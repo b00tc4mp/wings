@@ -8,21 +8,12 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-rename');
 
 	grunt
 			.initConfig({
 
 				pkg : grunt.file.readJSON('package.json'),
-
-				uglify : {
-					options : {
-						banner : '/*! <%= pkg.title %> <%= pkg.version %> */'
-					},
-					build : {
-						src : 'src/<%= pkg.name %>.js',
-						dest : 'dist/<%= pkg.name %>-<%= pkg.version %>.min.js'
-					}
-				},
 
 				jshint : {
 					options : {
@@ -37,21 +28,14 @@ module.exports = function(grunt) {
 
 				clean : [ 'dist' ],
 
-				copy : {
-					dist : {
-						files : [ {
-							expand : true,
-							cwd : 'src',
-							src : [ 'favicon.ico', 'logo.svg', 'main.js',
-									'scripts/**', 'fonts/*', 'images/*' ],
-							dest : 'dist'
-						} ]
-					}
-				},
-
 				'string-replace' : {
 					inline : {
 						files : [ {
+							expand : true,
+							cwd : 'src',
+							src : '<%= pkg.name %>.js',
+							dest : 'dist'
+						}, {
 							expand : true,
 							cwd : 'src',
 							src : 'index.html',
@@ -68,8 +52,45 @@ module.exports = function(grunt) {
 									}, {
 										pattern : /_desc/g,
 										replacement : '<%= pkg.description %>'
+									}, {
+										pattern : /_ver/g,
+										replacement : '<%= pkg.version %>'
+									}, {
+										pattern : /_auth/g,
+										replacement : '<%= pkg.author %>'
 									} ]
 						}
+					}
+				},
+
+				rename : {
+					main : {
+						files : [ {
+							src : [ 'dist/<%= pkg.name %>.js' ],
+							dest : 'dist/<%= pkg.name %>-<%= pkg.version %>.js'
+						}, ]
+					}
+				},
+
+				uglify : {
+					options : {
+						banner : '/*! <%= pkg.title %> <%= pkg.version %> */'
+					},
+					build : {
+						src : 'dist/<%= pkg.name %>-<%= pkg.version %>.js',
+						dest : 'dist/<%= pkg.name %>-<%= pkg.version %>.min.js'
+					}
+				},
+
+				copy : {
+					dist : {
+						files : [ {
+							expand : true,
+							cwd : 'src',
+							src : [ 'favicon.ico', 'logo.svg', 'main.js',
+									'scripts/**', 'fonts/*', 'images/*' ],
+							dest : 'dist'
+						} ]
 					}
 				},
 
@@ -107,8 +128,8 @@ module.exports = function(grunt) {
 
 			});
 
-	grunt.registerTask('default', [ 'clean', 'jshint', 'uglify', 'copy',
-			'string-replace', 'sass' ]);
+	grunt.registerTask('default', [ 'clean', 'jshint', 'string-replace',
+			'rename', 'uglify', 'copy', 'sass' ]);
 
 	grunt.registerTask('serve', [ 'default', 'connect', 'watch' ]);
 
