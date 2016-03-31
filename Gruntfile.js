@@ -10,6 +10,12 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-rename');
 
+	var dir = {
+		src : 'src',
+		rel : 'dist/<%= pkg.title %>',
+		dist : 'dist'
+	};
+
 	grunt
 			.initConfig({
 
@@ -23,23 +29,23 @@ module.exports = function(grunt) {
 						'-W083' : true,
 						'-W061' : true
 					},
-					all : [ 'Gruntfile.js', 'src/**/*.js' ]
+					all : [ 'Gruntfile.js', dir.src + '/**/*.js' ]
 				},
 
-				clean : [ 'dist' ],
+				clean : [ dir.dist ],
 
 				'string-replace' : {
 					inline : {
 						files : [ {
 							expand : true,
-							cwd : 'src',
+							cwd : dir.src,
 							src : '<%= pkg.name %>.js',
-							dest : 'dist'
+							dest : dir.rel
 						}, {
 							expand : true,
-							cwd : 'src',
+							cwd : dir.src,
 							src : 'index.html',
-							dest : 'dist'
+							dest : dir.rel
 						} ],
 						options : {
 							replacements : [
@@ -65,10 +71,12 @@ module.exports = function(grunt) {
 
 				rename : {
 					main : {
-						files : [ {
-							src : [ 'dist/<%= pkg.name %>.js' ],
-							dest : 'dist/<%= pkg.name %>-<%= pkg.version %>.js'
-						}, ]
+						files : [
+								{
+									src : [ dir.rel + '/<%= pkg.name %>.js' ],
+									dest : dir.rel
+											+ '/<%= pkg.name %>-<%= pkg.version %>.js'
+								}, ]
 					}
 				},
 
@@ -77,8 +85,10 @@ module.exports = function(grunt) {
 						banner : '/*! <%= pkg.title %> <%= pkg.version %> */'
 					},
 					build : {
-						src : 'dist/<%= pkg.name %>-<%= pkg.version %>.js',
-						dest : 'dist/<%= pkg.name %>-<%= pkg.version %>.min.js'
+						src : dir.rel
+								+ '/<%= pkg.name %>-<%= pkg.version %>.js',
+						dest : dir.rel
+								+ '/<%= pkg.name %>-<%= pkg.version %>.min.js'
 					}
 				},
 
@@ -86,10 +96,10 @@ module.exports = function(grunt) {
 					dist : {
 						files : [ {
 							expand : true,
-							cwd : 'src',
+							cwd : dir.src,
 							src : [ 'favicon.ico', 'logo.svg', 'main.js',
 									'scripts/**', 'fonts/*', 'images/*' ],
-							dest : 'dist'
+							dest : dir.rel
 						} ]
 					}
 				},
@@ -98,9 +108,9 @@ module.exports = function(grunt) {
 					main : {
 						files : [ {
 							expand : true,
-							cwd : 'src/styles',
+							cwd : dir.src + '/styles',
 							src : [ 'main.scss' ],
-							dest : 'dist/styles',
+							dest : dir.rel + '/styles',
 							ext : '.css'
 						} ]
 					}
@@ -108,7 +118,7 @@ module.exports = function(grunt) {
 
 				watch : {
 					main : {
-						files : [ 'Gruntfile.js', 'src/**' ],
+						files : [ 'Gruntfile.js', dir.src + '/**' ],
 						tasks : [ 'default' ],
 						options : {
 							livereload : true
@@ -120,7 +130,7 @@ module.exports = function(grunt) {
 					dist : {
 						options : {
 							port : 9001,
-							base : 'dist',
+							base : dir.rel,
 							livereload : true
 						}
 					}
