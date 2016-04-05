@@ -231,8 +231,8 @@ var Wings;
 			// Force eval to correctly inherit the name of the
 			// constructor name (init), otherwise is not possible to set it (the
 			// name of a function is read-only and it can only be defined at the
-			// time it is declared; see
-			// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)
+			// time it is declared; See
+			// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name
 			eval('Class = function '
 					+ (prop.init && prop.init.name ? prop.init.name : 'Class')
 					+ '() { construct.apply(this, arguments); };');
