@@ -835,3 +835,8 @@ var Wings;
 	};
 
 })();
+
+//export
+
+if (module)
+	module.exports = Wings;
