@@ -3,10 +3,10 @@
   "title": "WingsJS",
   "description": "JavaScript UI framework that draws on canvas, inspired on Java Swing.",
   "version": "0.1.0",
-  "homepage": "http://1nside0ut.com/WingsJS/",
+  "homepage": "http://1nside0ut.com/wings-js/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/1nside0ut/WingsJS.git"
+    "url": "git+https://github.com/1nside0ut/wings-js.git"
   },
   "author": "manuelbarzi",
   "license": "MIT",
