@@ -1,4 +1,4 @@
-![Alt text](http://www.1nside0ut.com/WingsJS/images/logo.svg "WingsJS")
+![Alt text](http://www.1nside0ut.com/wings-js/images/logo.svg "WingsJS")
 
 #### JavaScript UI framework that draws on canvas, inspired on Java Swing.
 
@@ -63,4 +63,4 @@ box.add(new Wings.MouseDown(function() {
 }));
 ```
 
-Inspect the code demo examples at http://1nside0ut.com/WingsJS/
+Inspect the code demo examples at http://1nside0ut.com/wings-js/

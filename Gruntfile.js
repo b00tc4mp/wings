@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 
 	var dir = {
 		src : 'src',
-		rel : 'dist/<%= pkg.title %>',
+		rel : 'dist/<%= pkg.name %>-js',
 		dist : 'dist'
 	};
 
