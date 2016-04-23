@@ -333,16 +333,9 @@ var Wings;
 				this._visible = true;
 			},
 
-			// Mouse event handling.
+			// event handling
 
-			_isPointed : function(p) {
-				var pos = this.absoluteLocation(), pointed = pos.x <= p.x
-						&& p.x <= pos.x + this._coords.width && pos.y <= p.y
-						&& p.y <= pos.y + this._coords.height;
-				return pointed;
-			},
-
-			_mouseEvent : function(behavior, event) {
+			_event : function(behavior, event) {
 				if (this._behaviors.length > 0) {
 					for ( var i in this._behaviors) {
 						var b = this._behaviors[i];
@@ -353,16 +346,25 @@ var Wings;
 				}
 			},
 
+			// mouse event handling
+
+			_isPointed : function(p) {
+				var pos = this.absoluteLocation(), pointed = pos.x <= p.x
+						&& p.x <= pos.x + this._coords.width && pos.y <= p.y
+						&& p.y <= pos.y + this._coords.height;
+				return pointed;
+			},
+
 			_mouseMove : function(event) {
 				if (this.visible()) {
 					if (this._isPointed(event.location)) {
-						this._mouseEvent(MouseMove, event);
+						this._event(MouseMove, event);
 						if (this._mouse.pressed) {
 							this._mouse.dragging = true;
-							this._mouseEvent(MouseDrag, event);
+							this._event(MouseDrag, event);
 						}
 					} else if (this._mouse.dragging)
-						this._mouseEvent(MouseDrag, event);
+						this._event(MouseDrag, event);
 					if (this._children.length > 0) {
 						for ( var i in this._children) {
 							this._children[i]._mouseMove(event);
@@ -375,7 +377,7 @@ var Wings;
 				if (this.visible()) {
 					if (this._isPointed(event.location)) {
 						this._mouse.pressed = true;
-						this._mouseEvent(MouseDown, event);
+						this._event(MouseDown, event);
 					}
 					if (this._children.length > 0) {
 						for ( var i in this._children) {
@@ -389,7 +391,7 @@ var Wings;
 				this._releaseMouse();
 				if (this.visible()) {
 					if (this._isPointed(event.location)) {
-						this._mouseEvent(MouseUp, event);
+						this._event(MouseUp, event);
 					}
 					if (this._children.length > 0) {
 						for ( var i in this._children) {
@@ -412,7 +414,7 @@ var Wings;
 			_mouseClick : function(event) {
 				if (this.visible()) {
 					if (this._isPointed(event.location)) {
-						this._mouseEvent(MouseClick, event);
+						this._event(MouseClick, event);
 					}
 					if (this._children.length > 0) {
 						for ( var i in this._children) {
@@ -424,20 +426,9 @@ var Wings;
 
 			// Key event handling.
 
-			_keyEvent : function(behavior, event) {
-				if (this._behaviors.length > 0) {
-					for ( var i in this._behaviors) {
-						var b = this._behaviors[i];
-						if (b instanceof behavior) {
-							b.action(event);
-						}
-					}
-				}
-			},
-
 			_keyDown : function(event) {
 				if (this.visible()) {
-					this._keyEvent(KeyDown, event);
+					this._event(KeyDown, event);
 					if (this._children.length > 0) {
 						for ( var i in this._children) {
 							this._children[i]._keyDown(event);
@@ -448,7 +439,7 @@ var Wings;
 
 			_keyUp : function(event) {
 				if (this.visible()) {
-					this._keyEvent(KeyUp, event);
+					this._event(KeyUp, event);
 					if (this._children.length > 0) {
 						for ( var i in this._children) {
 							this._children[i]._keyUp(event);
@@ -459,7 +450,7 @@ var Wings;
 
 			_keyPress : function(event) {
 				if (this.visible()) {
-					this._keyEvent(KeyPress, event);
+					this._event(KeyPress, event);
 					if (this._children.length > 0) {
 						for ( var i in this._children) {
 							this._children[i]._keyPress(event);
