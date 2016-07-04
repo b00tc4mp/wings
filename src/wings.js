@@ -718,7 +718,7 @@ var Wings;
 
 				this._super();
 
-				var view = this;
+				var self = this;
 
 				this.width(canvas.width);
 				this.height(canvas.height);
@@ -737,23 +737,23 @@ var Wings;
 				// mouse event handling through view component's tree.
 
 				window.addEventListener('mousemove', function(event) {
-					view._mouseMove(new MouseEvent(event));
-					view.refresh();
+					self._mouseMove(new MouseEvent(event));
+					self.refresh();
 				});
 
 				window.addEventListener('mousedown', function(event) {
-					view._mouseDown(new MouseEvent(event));
-					view.refresh();
+					self._mouseDown(new MouseEvent(event));
+					self.refresh();
 				});
 
 				window.addEventListener('mouseup', function(event) {
-					view._mouseUp(new MouseEvent(event));
-					view.refresh();
+					self._mouseUp(new MouseEvent(event));
+					self.refresh();
 				});
 
 				window.addEventListener('click', function(event) {
-					view._mouseClick(new MouseEvent(event));
-					view.refresh();
+					self._mouseClick(new MouseEvent(event));
+					self.refresh();
 				});
 
 				/**
@@ -766,33 +766,33 @@ var Wings;
 				// key event handling through view component's tree.
 
 				window.addEventListener('keydown', function(event) {
-					view._keyDown(new KeyEvent(event));
-					view.refresh();
+					self._keyDown(new KeyEvent(event));
+					self.refresh();
 				});
 
 				window.addEventListener('keyup', function(event) {
-					view._keyUp(new KeyEvent(event));
-					view.refresh();
+					self._keyUp(new KeyEvent(event));
+					self.refresh();
 				});
 
 				window.addEventListener('keypress', function(event) {
-					view._keyPress(new KeyEvent(event));
-					view.refresh();
+					self._keyPress(new KeyEvent(event));
+					self.refresh();
 				});
 
 				// view refreshing cycle
 
 				setTimeout(function() {
-					view.refresh();
+					self.refresh();
 				}, 100);
 
 			},
 
 			refresh : function() {
-				var view = this;
+				var self = this;
 				window.requestAnimFrame(function() {
-					view._ctx.clearRect(0, 0, view.width(), view.height());
-					view._draw(view._ctx);
+					self._ctx.clearRect(0, 0, self.width(), self.height());
+					self._draw(self._ctx);
 				});
 			}
 
