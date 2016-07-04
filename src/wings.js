@@ -43,7 +43,8 @@ var Wings;
 			// objects
 
 			typeOf : function(obj) {
-				return this.isFunction(obj) ? obj.name || Function.name
+				return this.isFunction(obj)
+						? obj.name || Function.name
 						: obj.constructor.name || Object.name;
 			},
 
@@ -121,7 +122,7 @@ var Wings;
 			isType : function(obj, type) {
 
 				if (!js.isType(type, Array))
-					type = [ type ];
+					type = [type];
 
 				var expected = js.typeOf(type[0]);
 				var passes = js.isType(obj, type[0]);
@@ -197,8 +198,8 @@ var Wings;
 			// Copy the properties over onto the new prototype
 			for ( var name in prop) {
 				// Check if we're overwriting an existing function
-				prototype[name] = typeof prop[name] == "function"
-						&& typeof _super[name] == "function"
+				prototype[name] = typeof prop[name] == 'function'
+						&& typeof _super[name] == 'function'
 						&& fnTest.test(prop[name]) ? (function(name, fn) {
 					return function() {
 						var tmp = this._super;
@@ -490,7 +491,7 @@ var Wings;
 
 			add : function(that) {
 
-				assert.isType(that, [ Component, Behavior ]);
+				assert.isType(that, [Component, Behavior]);
 
 				if (that instanceof Component) {
 					this._children.push(that);
@@ -522,16 +523,16 @@ var Wings;
 			 */
 			location : function() {
 				switch (arguments.length) {
-				case 0:
-					return new Point(this._coords.x, this._coords.y);
-				case 1:
-					var loc = arguments[0];
-					this._coords.x = loc.x;
-					this._coords.y = loc.y;
-					break;
-				case 2:
-					this._coords.x = arguments[0];
-					this._coords.y = arguments[1];
+					case 0 :
+						return new Point(this._coords.x, this._coords.y);
+					case 1 :
+						var loc = arguments[0];
+						this._coords.x = loc.x;
+						this._coords.y = loc.y;
+						break;
+					case 2 :
+						this._coords.x = arguments[0];
+						this._coords.y = arguments[1];
 				}
 
 			},
@@ -733,9 +734,7 @@ var Wings;
 							event.clientY - offset.y);
 				}
 
-				/**
-				 * Mouse event handling through view component's tree.
-				 */
+				// mouse event handling through view component's tree.
 
 				window.addEventListener('mousemove', function(event) {
 					view._mouseMove(new MouseEvent(event));
@@ -757,10 +756,6 @@ var Wings;
 					view.refresh();
 				});
 
-				setTimeout(function() {
-					view.refresh();
-				}, 100);
-
 				/**
 				 * Key Event.
 				 */
@@ -768,9 +763,7 @@ var Wings;
 					this.key = event.which || event.keyCode;
 				}
 
-				/**
-				 * Key event handling through view component's tree.
-				 */
+				// key event handling through view component's tree.
 
 				window.addEventListener('keydown', function(event) {
 					view._keyDown(new KeyEvent(event));
@@ -787,16 +780,20 @@ var Wings;
 					view.refresh();
 				});
 
+				// view refreshing cycle
+
+				setTimeout(function() {
+					view.refresh();
+				}, 100);
+
 			},
 
 			refresh : function() {
-				if (js.empty(arguments)) {
-					var view = this;
-					window.requestAnimFrame(function() {
-						view._ctx.clearRect(0, 0, view.width(), view.height());
-						view._draw(view._ctx);
-					});
-				}
+				var view = this;
+				window.requestAnimFrame(function() {
+					view._ctx.clearRect(0, 0, view.width(), view.height());
+					view._draw(view._ctx);
+				});
 			}
 
 		});
