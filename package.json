@@ -2,7 +2,7 @@
   "name": "wings",
   "title": "WingsJS",
   "description": "JavaScript UI framework that draws on canvas, inspired on Java Swing.",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "homepage": "http://1nside0ut.com/wings-js/",
   "repository": {
     "type": "git",
