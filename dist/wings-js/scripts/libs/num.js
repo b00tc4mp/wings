@@ -5,25 +5,25 @@
  */
 var num;
 (function() {
-	'use strict';
+    'use strict';
 
-	num = {
+    num = {
 
-		radians : function(degrees) {
-			return Math.PI * degrees / 180;
-		},
+        radians: function(degrees) {
+            return Math.PI * degrees / 180;
+        },
 
-		toStringDigits : function(value, digits) {
-			var val = value.toString();
-			if (val.length > digits) {
-				val = val.slice(val.length - digits, val.length);
-			} else if (val.length < digits) {
-				var length = val.length;
-				for (var i = 0; i < digits - length; i++) {
-					val = '0' + val;
-				}
-			}
-			return val;
-		}
-	};
+        toStringDigits: function(value, digits) {
+            var val = value.toString();
+            if (val.length > digits) {
+                val = val.slice(val.length - digits, val.length);
+            } else if (val.length < digits) {
+                var length = val.length;
+                for (var i = 0; i < digits - length; i++) {
+                    val = '0' + val;
+                }
+            }
+            return val;
+        }
+    };
 })();

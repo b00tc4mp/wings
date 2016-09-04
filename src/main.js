@@ -1,14 +1,14 @@
 (function() {
-	'use strict';
+    'use strict';
 
-	js.run(function() {
+    js.run(function() {
 
-		var content = document.getElementById('content');
+        var content = document.getElementById('content');
 
-		easy.center(content);
+        easy.center(content);
 
-		easy.visible(true, content);
+        easy.visible(true, content);
 
-	});
+    });
 
 })();
