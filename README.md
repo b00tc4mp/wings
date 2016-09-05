@@ -1,6 +1,6 @@
 ![Alt text](http://www.1nside0ut.com/wings-js/images/logo.svg "WingsJS")
 
-#### JavaScript UI framework that draws on canvas, inspired on Java Swing.
+#### JavaScript UI framework that draws on HTML5 Canvas, inspired by Java Swing.
 
 ##### Usage:
 
