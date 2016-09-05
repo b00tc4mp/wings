@@ -7,7 +7,7 @@
 Link Wings to your web page,
 
 ```html
-<script type='text/javascript' src='wings-0.0.1.min.js'></script>
+<script type='text/javascript' src='wings-0.0.3.min.js'></script>
 ```
 
 Remember you need a canvas to draw on,
