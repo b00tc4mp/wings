@@ -1,7 +1,7 @@
 /**
  * WingsJS
  * 
- * JavaScript UI framework that draws on HTML5 Canvas, inspired by Java Swing.
+ * JavaScript UI framework that draws on HTML5 Canvas.
  * 
  * @version 0.0.3
  * 
