@@ -1,28 +1,26 @@
 ![Alt text](http://www.1nside0ut.com/wings-js/images/logo.svg "WingsJS")
 
-#### JavaScript UI framework that draws on HTML5 Canvas.
-
 ##### Usage:
 
-Link Wings to your web page,
+Link Wings to your web page:
 
 ```html
-<script type='text/javascript' src='wings-0.0.3.min.js'></script>
+<script type='text/javascript' src='wings-[current version].min.js'></script>
 ```
 
-Remember you need a canvas to draw on,
+You need a canvas to draw on:
 
 ```html
 <canvas id='canvas' width='300px' height='300px'>
 ```
 
-Then link that canvas to the view,
+Link that canvas to the view:
 
 ```javascript
 var view = new Wings.View(document.getElementById('canvas'));
 ```
 
-Create a component you want,
+Create a component:
 
 ```javascript
 var Box = Wings.Panel.extend({
@@ -42,20 +40,20 @@ var Box = Wings.Panel.extend({
 		});
 ```
 
-Add it to the view,
+Add it to the view:
 
 ```javascript
 var box = new Box();
 view.add(box);
 ```
 
-Locate it inside the view,
+Locate it inside:
 
 ```javascript
 box.location(100, 100);
 ```
 
-Add mouse reaction to it,
+Add mouse reaction to it:
 
 ```javascript
 box.add(new Wings.MouseDown(function() {
@@ -63,4 +61,4 @@ box.add(new Wings.MouseDown(function() {
 }));
 ```
 
-Inspect the code demo examples at http://1nside0ut.com/wings-js/
+See demos at http://1nside0ut.com/wings-js/

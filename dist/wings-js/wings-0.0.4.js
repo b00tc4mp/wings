@@ -1,9 +1,9 @@
 /**
  * WingsJS
  * 
- * JavaScript UI framework that draws on HTML5 Canvas.
+ * Object-Oriented JavaScript UI framework that draws on HTML5 Canvas.
  * 
- * @version 0.0.3
+ * @version 0.0.4
  * 
  * @author manuelbarzi
  */
