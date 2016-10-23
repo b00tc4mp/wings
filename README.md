@@ -27,16 +27,10 @@ var Box = Wings.Panel.extend({
 			init : function Box() {
 				this._super();
 				this.size(50, 50);
-				this.color('magenta');
-			},
-			draw : function(ctx) {
-				ctx.beginPath();
-				ctx.lineWidth = '10';
-				ctx.strokeStyle = this.color();
-				ctx.rect(0, 0, this.width(), this.height());
-				ctx.stroke();
+				this.backgroundColor('magenta');
+				this.borderColor('cyan');
+				this.borderWidth(5);
 			}
-
 		});
 ```
 

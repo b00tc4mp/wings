@@ -9,7 +9,7 @@
 
         var view = new Wings.View(document.getElementById('cube-3d'));
 
-        view.color('magenta');
+        view.backgroundColor('magenta');
         view.borderColor('transparent');
 
         /**

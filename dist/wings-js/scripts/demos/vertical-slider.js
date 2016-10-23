@@ -9,7 +9,7 @@
 
         var view = new Wings.View(document.getElementById('vertical-slider'));
 
-        view.color('magenta');
+        view.backgroundColor('magenta');
         view.borderColor('transparent');
 
         /**
@@ -28,7 +28,7 @@
 
                 slider.size(50, 200);
 
-                slider.color('transparent');
+                slider.backgroundColor('transparent');
                 slider.borderColor('cyan');
                 slider.borderWidth(5);
 
@@ -41,7 +41,7 @@
                         var knob = this;
 
                         knob.size(slider.width(), slider.width());
-                        knob.color('white');
+                        knob.backgroundColor('white');
                         knob.borderColor('transparent');
 
                         knob._txt = {
@@ -72,7 +72,7 @@
                     },
 
                     draw: function(ctx) {
-                        ctx.fillStyle = this.color();
+                        ctx.fillStyle = this.backgroundColor();
                         ctx.fillRect(0, 0, this.width(), this.height());
                         ctx.fillStyle = 'black';
                         ctx.font = this._txt.height + 'px verdana';

@@ -8,7 +8,7 @@
 
         var view = new Wings.View(document.getElementById('reactive-box'));
 
-        view.color('cyan');
+        view.backgroundColor('cyan');
         view.borderColor('transparent');
 
         /**
@@ -21,7 +21,7 @@
             init: function ReactiveBox(msg) {
                 this._super();
                 this.size(50, 50);
-                this.color('magenta');
+                this.backgroundColor('magenta');
                 this.add(new Wings.MouseDown(function() {
                     alert(msg);
                 }));
@@ -29,14 +29,14 @@
             draw: function(ctx) {
                 ctx.beginPath();
                 ctx.lineWidth = '5';
-                ctx.strokeStyle = this.color();
+                ctx.strokeStyle = this.backgroundColor();
                 ctx.rect(0, 0, this.width(), this.height());
                 ctx.stroke();
             }
 
         });
 
-        var box = new ReactiveBox('hey! you clicked on me!');
+        var box = new ReactiveBox('hey! you clicked on me?');
         box.location((view.width() - box.width()) / 2, (view.height() - box
             .height()) / 2);
 

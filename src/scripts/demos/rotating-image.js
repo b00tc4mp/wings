@@ -9,7 +9,7 @@
 
         var view = new Wings.View(document.getElementById('rotating-image'));
 
-        view.color('magenta');
+        view.backgroundColor('magenta');
         view.borderColor('transparent');
 
         /**

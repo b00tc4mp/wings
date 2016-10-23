@@ -9,7 +9,7 @@
 
         var view = new Wings.View(document.getElementById('moving-body'));
 
-        view.color('cyan');
+        view.backgroundColor('cyan');
         view.borderColor('transparent');
 
         /**
@@ -28,7 +28,7 @@
 
                 body.size(20, 200);
 
-                body.color('black');
+                body.backgroundColor('black');
                 body.borderColor('transparent');
 
                 var diff;
@@ -54,7 +54,7 @@
                         var eye = this;
 
                         eye.size(50, 50);
-                        eye.color('white');
+                        eye.backgroundColor('white');
                         eye.borderColor('transparent');
 
                         var diff;
@@ -75,7 +75,7 @@
 
                         iris.location(0, 30);
                         iris.size(20, 20);
-                        iris.color('black');
+                        iris.backgroundColor('black');
                         iris.borderColor('transparent');
 
                         var loc = iris.location(),
@@ -119,7 +119,7 @@
                         var mouth = this;
 
                         mouth.size(50, 50);
-                        mouth.color('transparent');
+                        mouth.backgroundColor('transparent');
                         mouth.borderColor('transparent');
 
                         var diff;
@@ -145,7 +145,7 @@
                                 var lip = this;
 
                                 lip.size(mouth.width(), mouth.height() / 3);
-                                lip.color('magenta');
+                                lip.backgroundColor('magenta');
                                 lip.borderColor('transparent');
                             }
 

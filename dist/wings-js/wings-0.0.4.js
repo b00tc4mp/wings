@@ -1,7 +1,7 @@
 /**
  * WingsJS
  * 
- * Object-Oriented JavaScript UI framework that draws on HTML5 Canvas.
+ * Object-Oriented JavaScript UI framework over HTML5 Canvas.
  * 
  * @version 0.0.4
  * 
@@ -317,7 +317,7 @@ var Wings;
     /**
      * Wings's core parts.
      */
-    var Component, Behavior, Border, Panel, Image, View, MouseDown, MouseMove, MouseClick, MouseUp, MouseDrag, KeyDown, KeyUp, KeyPress;
+    var Component, Behavior, Panel, Image, View, MouseDown, MouseMove, MouseClick, MouseUp, MouseDrag, KeyDown, KeyUp, KeyPress;
     (function() {
 
         /**
@@ -642,31 +642,31 @@ var Wings;
         // Base components.
 
         /**
-         * Border.
+         * Panel.
          */
-        Border = Component.extend({
+        Panel = Component.extend({
 
-            init: function Border() {
+            init: function Panel() {
                 this._super();
-                this._color = 'transparent';
-                this._borderColor = 'magenta';
-                this._borderWidth = 1;
+                this.backgroundColor('cyan');
+                this.borderColor('magenta');
+                this.borderWidth(1);
             },
 
-            color: function(color) {
-                if (js.not(color))
-                    return this._color;
-                this._color = color;
+            backgroundColor: function(backgroundColor) {
+                if (js.notDefined(backgroundColor))
+                    return this._backgroundColor;
+                this._backgroundColor = backgroundColor;
             },
 
             borderColor: function(borderColor) {
-                if (js.not(borderColor))
+                if (js.notDefined(borderColor))
                     return this._borderColor;
                 this._borderColor = borderColor;
             },
 
             borderWidth: function(borderWidth) {
-                if (js.not(borderWidth))
+                if (js.notDefined(borderWidth))
                     return this._borderWidth;
                 this._borderWidth = borderWidth;
             },
@@ -674,22 +674,11 @@ var Wings;
             draw: function(ctx) {
                 ctx.beginPath();
                 ctx.rect(0, 0, this.width(), this.height());
-                ctx.fillStyle = this.color();
+                ctx.fillStyle = this.backgroundColor();
                 ctx.fill();
                 ctx.lineWidth = this.borderWidth();
                 ctx.strokeStyle = this.borderColor();
                 ctx.stroke();
-            }
-        });
-
-        /**
-         * Panel.
-         */
-        Panel = Border.extend({
-
-            init: function Panel() {
-                this._super();
-                this.color('cyan');
             }
 
         });
@@ -811,7 +800,6 @@ var Wings;
         Rectangle: Rectangle,
         Component: Component,
         Behavior: Behavior,
-        Border: Border,
         Panel: Panel,
         Image: Image,
         View: View,

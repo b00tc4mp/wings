@@ -9,7 +9,7 @@
 
         var view = new Wings.View(document.getElementById('movable-box'));
 
-        view.color('cyan');
+        view.backgroundColor('cyan');
         view.borderColor('transparent');
 
         /**
@@ -28,7 +28,7 @@
                 var box = this;
 
                 box.size(70, 70);
-                box.color('white');
+                box.backgroundColor('white');
                 box.borderColor('transparent');
 
                 box._txt = {
@@ -68,7 +68,7 @@
             },
 
             draw: function(ctx) {
-                ctx.fillStyle = this.color();
+                ctx.fillStyle = this.backgroundColor();
                 ctx.fillRect(0, 0, this.width(), this.height());
                 ctx.fillStyle = 'black';
                 ctx.font = this._txt.height + 'px verdana';
