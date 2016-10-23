@@ -3,7 +3,7 @@
  * 
  * Object-Oriented JavaScript UI framework over HTML5 Canvas.
  * 
- * @version 0.0.4
+ * @version 0.0.5
  * 
  * @author manuelbarzi
  */
