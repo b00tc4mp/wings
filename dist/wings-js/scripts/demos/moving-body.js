@@ -22,7 +22,7 @@
 
             init: function MovingBody() {
 
-                this._super();
+                this._super.init();
 
                 var body = this;
 
@@ -49,7 +49,7 @@
 
                     init: function Eye() {
 
-                        this._super();
+                        this._super.init();
 
                         var eye = this;
 
@@ -114,7 +114,7 @@
 
                     init: function Mouth() {
 
-                        this._super();
+                        this._super.init();
 
                         var mouth = this;
 
@@ -140,7 +140,7 @@
 
                             init: function Lip() {
 
-                                this._super();
+                                this._super.init();
 
                                 var lip = this;
 

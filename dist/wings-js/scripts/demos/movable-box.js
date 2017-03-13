@@ -23,7 +23,7 @@
 
             init: function MovableBox() {
 
-                this._super();
+                this._super.init();
 
                 var box = this;
 

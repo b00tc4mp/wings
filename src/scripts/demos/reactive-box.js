@@ -19,7 +19,7 @@
          */
         var ReactiveBox = Wings.Panel.extend({
             init: function ReactiveBox(msg) {
-                this._super();
+                this._super.init();
                 this.size(50, 50);
                 this.backgroundColor('magenta');
                 this.add(new Wings.MouseDown(function() {

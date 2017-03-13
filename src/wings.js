@@ -186,7 +186,7 @@ var Wings;
         Class = function Class() {};
 
         // Create a new Class that inherits from this class
-        Class.extend = function(prop) {
+        Class.extend = function(body) {
             var _super = this.prototype;
 
             // Instantiate a base class (but only create the instance,
@@ -195,28 +195,50 @@ var Wings;
             var prototype = new this();
             initializing = false;
 
+            // Wrap all _super methods in a new __super object so it can be used
+            // to provide 'direct super-class members invocation', avoiding the need
+            // to use 'call' or 'apply' from an child-class instance. 
+            var __super = {};
+            (function() {
+                for (var name in _super) {
+                    (function(name, member) {
+                        if (typeof member === 'function')
+                            __super[name] = function() {
+                                // _this is a reference to the current object, set only in members
+                                // requiring _super (see below in next closure, where these members
+                                // are wrapped to accomplish that goal) 
+                                return member.apply(__super._this, arguments);
+                            };
+                    })(name, _super[name]);
+                }
+            })();
+
             // Copy the properties over onto the new prototype
-            for (var name in prop) {
-                // Check if we're overwriting an existing function
-                prototype[name] = typeof prop[name] == 'function' &&
-                    typeof _super[name] == 'function' &&
-                    fnTest.test(prop[name]) ? (function(name, fn) {
-                        return function() {
-                            var tmp = this._super;
+            (function() {
+                for (var name in body) {
+                    // Check if we're overwriting an existing function
+                    prototype[name] = typeof body[name] == 'function' &&
+                        typeof _super[name] == 'function' &&
+                        fnTest.test(body[name]) ? (function(member) {
+                            return function() {
+                                var tmp = this._super;
 
-                            // Add a new ._super() method that is the same method
-                            // but on the super-class
-                            this._super = _super[name];
+                                // Temporary set _super reference to the super-class prototype and assign 
+                                // _this to current instance
+                                this._super = __super;
+                                __super._this = this;
 
-                            // The method only need to be bound temporarily, so we
-                            // remove it when we're done executing
-                            var ret = fn.apply(this, arguments);
-                            this._super = tmp;
+                                // The method only need to be bound temporarily, so we
+                                // remove it when we're done executing
+                                var ret = member.apply(this, arguments);
 
-                            return ret;
-                        };
-                    })(name, prop[name]) : prop[name];
-            }
+                                this._super = tmp;
+
+                                return ret;
+                            };
+                        })(body[name]) : body[name];
+                }
+            })();
 
             // The dummy class constructor
 
@@ -229,15 +251,13 @@ var Wings;
                     this.init.apply(this, arguments);
             }
 
-            // Force eval to correctly inherit the name of the constructor
-            // (named
-            // function assigned to init), otherwise is not possible to set it
-            // (the
+            // Force eval to correctly inherit the name of the constructor (named
+            // function assigned to init), otherwise is not possible to set it (the
             // name of a function is read-only and it can only be defined at the
             // time it is declared; See https://
             // developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name
             eval('Class = function ' +
-                (prop.init && prop.init.name ? prop.init.name : 'Class') +
+                (body.init && body.init.name ? body.init.name : 'Class') +
                 '() { construct.apply(this, arguments); };');
 
             // Populate our constructed prototype object
@@ -591,31 +611,31 @@ var Wings;
 
         MouseDown = Behavior.extend({
             init: function MouseDown(action) {
-                this._super(action);
+                this._super.init(action);
             }
         });
 
         MouseMove = Behavior.extend({
             init: function MouseMove(action) {
-                this._super(action);
+                this._super.init(action);
             }
         });
 
         MouseUp = Behavior.extend({
             init: function MouseUp(action) {
-                this._super(action);
+                this._super.init(action);
             }
         });
 
         MouseDrag = Behavior.extend({
             init: function MouseDrag(action) {
-                this._super(action);
+                this._super.init(action);
             }
         });
 
         MouseClick = Behavior.extend({
             init: function MouseClick(action) {
-                this._super(action);
+                this._super.init(action);
             }
         });
 
@@ -623,19 +643,19 @@ var Wings;
 
         KeyDown = Behavior.extend({
             init: function KeyDown(action) {
-                this._super(action);
+                this._super.init(action);
             }
         });
 
         KeyUp = Behavior.extend({
             init: function KeyUp(action) {
-                this._super(action);
+                this._super.init(action);
             }
         });
 
         KeyPress = Behavior.extend({
             init: function KeyPressed(action) {
-                this._super(action);
+                this._super.init(action);
             }
         });
 
@@ -647,7 +667,7 @@ var Wings;
         Panel = Component.extend({
 
             init: function Panel() {
-                this._super();
+                this._super.init();
                 this.backgroundColor('cyan');
                 this.borderColor('magenta');
                 this.borderWidth(1);
@@ -689,7 +709,7 @@ var Wings;
         Image = Component.extend({
 
             init: function Image(img) {
-                this._super();
+                this._super.init();
                 this._img = img;
             },
 
@@ -706,7 +726,7 @@ var Wings;
 
             init: function View(canvas) {
 
-                this._super();
+                this._super.init();
 
                 var self = this;
 

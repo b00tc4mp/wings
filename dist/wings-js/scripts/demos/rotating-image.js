@@ -29,7 +29,7 @@
 
             init: function RotatingImage(url, speed) {
 
-                this._super();
+                this._super.init();
 
                 var self = this;
 

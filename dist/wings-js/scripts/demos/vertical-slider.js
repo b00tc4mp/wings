@@ -22,7 +22,7 @@
 
             init: function VerticalSlider() {
 
-                this._super();
+                this._super.init();
 
                 var slider = this;
 
@@ -36,7 +36,7 @@
 
                     init: function Knob() {
 
-                        this._super();
+                        this._super.init();
 
                         var knob = this;
 

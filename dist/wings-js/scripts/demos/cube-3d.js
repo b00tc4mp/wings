@@ -22,7 +22,7 @@
 
             init: function Cube3D() {
 
-                this._super();
+                this._super.init();
 
                 var cube = this;
 
