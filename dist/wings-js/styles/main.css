@@ -1,9 +1,9 @@
-@import url(http://fonts.googleapis.com/css?family=Lobster);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:300);
 @font-face {
-  font-family: 'Sansation Light';
+  font-family: Sansation Light;
   src: url(../fonts/sansation-light.woff); }
 * {
-  font-family: "Sansation Light", Lobster, arial, cursive; }
+  font-family: Sansation Light, Ubuntu, arial, cursive; }
 
 html {
   height: 100%; }

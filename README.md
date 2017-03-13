@@ -25,7 +25,7 @@ Create a component:
 ```javascript
 var Box = Wings.Panel.extend({
 			init : function Box() {
-				this._super();
+				this._super.init();
 				this.size(50, 50);
 				this.backgroundColor('magenta');
 				this.borderColor('cyan');

@@ -2,7 +2,7 @@
     "name": "wings-js",
     "shortname": "wings",
     "title": "WingsJS",
-    "description": "Object-Oriented JavaScript UI framework over HTML5 Canvas.",
+    "description": "Object-oriented / Component-based JavaScript UI framework over HTML5 Canvas",
     "version": "0.1.0",
     "homepage": "http://1nside0ut.com/wings-js/",
     "repository": {

@@ -1,7 +1,7 @@
 /**
  * WingsJS
  * 
- * Object-Oriented JavaScript UI framework over HTML5 Canvas.
+ * Object-oriented / Component-based JavaScript UI framework over HTML5 Canvas
  * 
  * @version 0.1.0
  * 
