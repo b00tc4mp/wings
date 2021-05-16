@@ -1,58 +1,67 @@
-![Alt text](http://www.1nside0ut.com/wings-js/images/logo.svg "WingsJS")
+![Alt text](./images/logo.svg "WingsJS")
 
 ##### Usage:
 
-Link Wings to your web page:
+Link Wings to your web page
 
 ```html
-<script type='text/javascript' src='wings-[current version].min.js'></script>
+<script src="wings.js"></script>
 ```
 
-You need a canvas to draw on:
+Add a canvas
 
 ```html
-<canvas id='canvas' width='300px' height='300px'>
+<canvas id="view" width="300px" height="300px">
 ```
 
-Link that canvas to the view:
+Add `View` and `Component` classes to your running scope
 
-```javascript
-var view = new Wings.View(document.getElementById('canvas'));
+```js
+const { View, Component } = Wings
 ```
 
-Create a component:
+Instantiate the view linking it to the canvas
 
-```javascript
-var Box = Wings.Panel.extend({
-			init : function Box() {
-				this._super();
-				this.size(50, 50);
-				this.backgroundColor('magenta');
-				this.borderColor('cyan');
-				this.borderWidth(5);
-			}
-		});
+```js
+var view = new View(document.getElementById("view"))
 ```
 
-Add it to the view:
+Create a component class (demo)
 
-```javascript
-var box = new Box();
-view.add(box);
+```js
+class Box extends Component {
+	constructor() {
+		super()
+
+		// set the dimensions
+		this.width = this.height = 50
+
+		// set colors
+		this.backgroundColor = 'magenta'
+		this.borderColor = 'cyan'
+		this.borderWidth = 5
+	}
+}
 ```
 
-Locate it inside:
+Instantiate it and add it to the view
 
-```javascript
-box.location(100, 100);
+```js
+var box = new Box
+
+view.add(box)
 ```
 
-Add mouse reaction to it:
+Locate it inside the view
 
-```javascript
-box.add(new Wings.MouseDown(function() {
-	alert('My location is ' + box.location());
-}));
+```js
+box.x = box.y = 100
 ```
 
-See demos at http://1nside0ut.com/wings-js/
+Add mouse reaction to it
+
+```js
+box.on('MouseClick', () => alert('Hello, World!'))
+```
+
+See demos at https://manuelbarzi.github.io/wings-js
