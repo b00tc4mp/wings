@@ -13,7 +13,7 @@
             this.width = this.height = 50
             this.backgroundColor = 'magenta'
 
-            var ouch = new Audio('sounds/ouch.mp3');
+            const ouch = new Audio('sounds/ouch.mp3');
 
             this.on('MouseClick', () => {
                 ouch.play()

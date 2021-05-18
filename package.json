@@ -3,7 +3,7 @@
     "shortname": "wings",
     "title": "WingsJS",
     "description": "Component-Oriented JavaScript UI framework for Canvas",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "homepage": "https://manuelbarzi.github.io/wings-js",
     "repository": {
         "type": "git",

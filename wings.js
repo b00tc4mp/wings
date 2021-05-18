@@ -4,7 +4,7 @@
  * Component-Oriented JavaScript UI framework for Canvas
  * 
  * @author manuelbarzi
- * @version 1.0.0
+ * @version 1.0.1
  */
 const Wings = (() => {
     class Component {
@@ -155,9 +155,8 @@ const Wings = (() => {
             this.render(context)
 
             if (this.children.length > 0)
-                for (const child of this.children) {
+                for (const child of this.children)
                     child.triggerRender(context)
-                }
 
             context.translate(-this.x, -this.y)
         }

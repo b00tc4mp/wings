@@ -11,10 +11,10 @@
             super()
 
             this.image = new Image()
+
             this.image.src = url
-            this.image.onload = () => {
-                this.image.loaded = true
-            }
+
+            this.image.onload = () => this.image.loaded = true
 
             this.angle = 0
 
@@ -26,7 +26,6 @@
 
                 view.refresh()
             }, 1 / speed)
-
         }
 
         render(context) {
