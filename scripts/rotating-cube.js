@@ -24,7 +24,7 @@
             pts.push(new Tri.Point(50, 50, 0))
             pts.push(new Tri.Point(50, 0, 0))
 
-            Tri.transArray(-25, -25, -25, pts)
+            Tri.points.translate(-25, -25, -25, pts)
 
             pts = cube.points[1]
 
@@ -33,14 +33,14 @@
             pts.push(new Tri.Point(50, 50, 50))
             pts.push(new Tri.Point(50, 0, 50))
 
-            Tri.transArray(-25, -25, -25, pts)
+            Tri.points.translate(-25, -25, -25, pts)
 
             setInterval(function () {
                 for (const i in cube.points) {
                     pts = cube.points[i]
-                    Tri.rotArrayX(1, pts)
-                    Tri.rotArrayY(-1, pts)
-                    Tri.rotArrayZ(1, pts)
+                    Tri.points.rotateX(1, pts)
+                    Tri.points.rotateY(-1, pts)
+                    Tri.points.rotateZ(1, pts)
                 }
 
                 view.refresh()

@@ -260,3 +260,5 @@ const Wings = (() => {
         View
     }
 })()
+
+module.exports = Wings

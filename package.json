@@ -1,15 +1,23 @@
 {
-    "name": "wings-js",
-    "shortname": "wings",
-    "title": "WingsJS",
-    "description": "Component-Oriented JavaScript UI framework for Canvas",
-    "version": "1.0.1",
-    "homepage": "https://manuelbarzi.github.io/wings-js",
+    "name": "@b00tc4mp/wings",
+    "description": "Object-oriented Component-based UI JavaScript library for HTML Canvas (inspired by Java Swing)",
+    "version": "1.0.2",
+    "homepage": "https://b00tc4mp.github.io/wings",
     "repository": {
         "type": "git",
-        "url": "https://github.com/manuelbarzi/wings-js"
+        "url": "git+https://github.com/b00tc4mp/wings.git"
     },
     "author": "manuelbarzi",
     "license": "MIT",
-    "main": "wings.js"
+    "main": "wings.js",
+    "type": "module",
+    "exports": {
+        ".": {
+            "import": "./dist/wings.mjs",
+            "require": "./dist/wings.cjs"
+        }
+    },
+    "scripts": {
+        "build": "node build"
+    }
 }

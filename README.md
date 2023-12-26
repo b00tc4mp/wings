@@ -1,32 +1,34 @@
-![Alt text](./images/logo.svg "WingsJS")
+![Alt text](./images/logo.svg "Wings")
 
-##### Usage:
+Object-oriented Component-based UI JavaScript library for HTML Canvas (inspired by Java Swing)
 
-Link Wings to your web page
+##### Usage
+
+- link wings
 
 ```html
 <script src="wings.js"></script>
 ```
 
-Add a canvas
+- add a canvas
 
 ```html
 <canvas id="view" width="300px" height="300px">
 ```
 
-Add `View` and `Component` classes to your running scope
+- add `View` and `Component` classes
 
 ```js
 const { View, Component } = Wings
 ```
 
-Instantiate the view linking it to the canvas
+- construct a view with a reference to the canvas
 
 ```js
-var view = new View(document.getElementById("view"))
+const view = new View(document.getElementById("view"))
 ```
 
-Create a component class (demo)
+- create a component class (example)
 
 ```js
 class Box extends Component {
@@ -44,24 +46,26 @@ class Box extends Component {
 }
 ```
 
-Instantiate it and add it to the view
+- create an instance and add it to the view
 
 ```js
-var box = new Box
+const box = new Box
 
 view.add(box)
 ```
 
-Locate it inside the view
+- locate it inside the view
 
 ```js
 box.x = box.y = 100
 ```
 
-Add mouse reaction to it
+- add a mouse reaction to it (example)
 
 ```js
 box.on('MouseClick', () => alert('Hello, World!'))
 ```
 
-See demos at https://manuelbarzi.github.io/wings-js
+- and that's it
+
+See more examples at https://b00tc4mp.github.io/wings
