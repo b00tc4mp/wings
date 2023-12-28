@@ -53,6 +53,10 @@ p {
 	margin: .5rem 0;
 }
 
+sub {
+	font-size: .75rem;
+}
+
 header,
 footer {
 	min-width: var(--width);

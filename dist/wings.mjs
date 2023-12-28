@@ -1,7 +1,7 @@
 /**
  * Wings JS
  * 
- * Object-Oriented Component-based UI Library for Canvas built in JavaScript (inspired by Java Swing).
+ * Object-Oriented Component-based UI Library for Canvas built in JavaScript (inspired by Java Swing)
  * 
  * @author manuelbarzi
  * @version 1.1.1
