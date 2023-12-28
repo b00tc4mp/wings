@@ -4,13 +4,17 @@
  * An Object-Oriented Component-based UI Library for Canvas built in JavaScript (inspired by Java Swing).
  * 
  * @author manuelbarzi
- * @version 1.0.2
+ * @version 1.1.0
  */
 const Wings = (() => {
     class Component {
         constructor() {
             this.x = this.y = this.width = this.height = 0
-            this.mouse = {}
+            this.mouse = {
+                entered: false,
+                pressed: false,
+                dragging: false
+            }
             this.behaviors = []
             this.parent = null
             this.children = []
@@ -58,14 +62,26 @@ const Wings = (() => {
         mouseMove(event) {
             if (this.visible) {
                 if (this.isPointed(event.x, event.y)) {
+                    if (!this.mouse.entered) {
+                        this.mouse.entered = true
+                        this.fireEvent('MouseEnter', event)
+                    }
+
                     this.fireEvent('MouseMove', event)
 
                     if (this.mouse.pressed) {
                         this.mouse.dragging = true
                         this.fireEvent('MouseDrag', event)
                     }
-                } else if (this.mouse.dragging)
-                    this.fireEvent('MouseDrag', event)
+                } else {
+                    if (this.mouse.entered) {
+                        this.mouse.entered = false
+                        this.fireEvent('MouseLeave', event)
+                    }
+
+                    if (this.mouse.dragging)
+                        this.fireEvent('MouseDrag', event)
+                }
 
                 if (this.children.length > 0)
                     for (const child of this.children)

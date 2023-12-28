@@ -4,10 +4,14 @@
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 	<meta content="utf-8" http-equiv="encoding">
 	<meta charset="utf-8" />
+
 	<title>Object-oriented Component-based UI JavaScript library for HTML Canvas (inspired by Java Swing)
 	</title>
+
 	<link rel="shortcut icon" sizes="any" type="image/ico" href="favicon.ico">
 	<link rel="stylesheet" href="style.css">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
 </head>
 
 <body>
@@ -18,96 +22,220 @@
 
 		<p>Object-oriented Component-based UI JavaScript library for HTML Canvas (inspired by Java Swing)</p>
 
-		<sup>1.0.2</sup>
+		<sup>1.1.0</sup>
 	</header>
 
-	<h2>Demos</h2>
+	<main>
+		<h2>Intallation</h2>
 
-	<article>
-		<h3>Draggable Body</h3>
+		<pre><code class="language-sh">$ npm i @b00tc4mp/wings --hello</code></pre>
 
-		<p>A body with draggable parts</p>
+		<h2>Usage (example)</h2>
 
-		<canvas id="draggable-body" width="300px" height="300px">
-		</canvas>
+		<article>
+			<h3>Toggling Saluter</h3>
 
-		<p><a href="scripts/draggable-body.js">code</a></p>
-	</article>
+			<p>A saluter that toggles from Hello to Bye, World, and viceversa when clicking on it</p>
 
-	<article>
-		<h3>Rotating Image</h3>
+			<canvas id="toggling-saluter" width="300px" height="300px">
+			</canvas>
 
-		<p>An infinitely rotating image</p>
+			<!-- <p><a href="scripts/toggling-saluter.js">code</a></p> -->
+		</article>
 
-		<canvas id="rotating-image" width="300px" height="300px">
-		</canvas>
+		<h3>Steps</h3>
 
-		<p><a href="scripts/rotating-image.js">code</a></p>
-	</article>
+		<pre><code class="language-html">&lt;!-- create a canvas in html --&gt;
+&lt;canvas id="toggling-saluter" width="300px" height="300px"&gt;</code></pre>
 
-	<article>
-		<h3>Reactive Box</h3>
+		<pre><code class="language-js">// import wings in javascript (esm)
+import Wings from '@b00tc4mp/wings'
+// or require it (cjs)
+// const Wings = require('@b00tc4mp/wings')
 
-		<p>A box that reacts on click</p>
+// destructure it
+const { View, Component } = Wings
 
-		<canvas id="reactive-box" width="300px" height="300px">
-		</canvas>
+// instantiate a view linked to a canvas
+const view = new View(document.getElementById('toggling-saluter'))
 
-		<p><a href="scripts/reactive-box.js">code</a></p>
-	</article>
+// create a saluter abstraction
+class TogglingSaluter extends Component {
+	constructor(hello, bye) {
+		super()
 
-	<article>
-		<h3>Vertical Slider</h3>
+		// set the dimensions
+		this.width = 150
+		this.height = 50
 
-		<p>A slider that updates the knob value when dragging it</p>
+		// set colors
+		this.backgroundColor = 'magenta'
+		this.borderColor = 'cyan'
+		this.borderWidth = 5
 
-		<canvas id="vertical-slider" width="300px" height="300px">
-		</canvas>
+		// set the text height for the salutation
+		this.textHeight = 16
 
-		<p><a href="scripts/vertical-slider.js">code</a></p>
-	</article>
+		// init the salutation value 
+		this.hello = hello
+		this.bye = bye
+		this.salutation = this.hello
 
-	<article>
-		<h3>Movable Box</h3>
+		// add behavior to toggle the salutation on click
+		this.on('MouseClick', () => {
+			if (this.salutation === this.hello)
+				this.salutation = this.bye
+			else
+				this.salutation = this.hello
+		})
+	}
 
-		<p>A box that moves with the keyboard: 'W' moves UP, 'S' moves DOWN, 'A' moves LEFT, and 'D' moves RIGHT</p>
+	render(context) {
+		// render the base layer
+		super.render(context)
 
-		<canvas id="movable-box" width="300px" height="300px">
-		</canvas>
+		// render the saluter value centered in the component
+		context.fillStyle = 'white'
+		context.font = this.textHeight + 'px verdana'
+		const width = context.measureText(this.salutation).width
+		context.fillText(
+			this.salutation,
+			(this.width - width) / 2,
+			(this.height + this.textHeight) / 2
+		)
+	}
+}
 
-		<p><a href="scripts/movable-box.js">code</a></p>
-	</article>
+// instantiate a saluter and center it at the top of the view
+const saluter = new TogglingSaluter('Hello, World!', 'Bye, World!')
 
-	<article>
-		<h3>Rotating Cube</h3>
+saluter.x = (view.width - saluter.width) / 2
+saluter.y = (view.height / 3 - saluter.height) / 2
 
-		<p>An infinitely rotating cube</p>
+// add the saluter to the view
+view.add(saluter)
 
-		<canvas id="rotating-cube" width="300px" height="300px">
-		</canvas>
+// instantiate a saluter and center it in the view
+const saluter2 = new TogglingSaluter('Hola Mundo!', 'Adiós, Mundo!')
 
-		<p><a href="scripts/rotating-cube.js">code</a></p>
-	</article>
+saluter2.x = (view.width - saluter2.width) / 2
+saluter2.y = (view.height - saluter2.height) / 2
 
-	<article>
-		<h3>Mouth Frames</h3>
+// add the saluter to the view
+view.add(saluter2)
 
-		<p>Mouth frames rendered sequentially to produce an animation</p>
+// instantiate a saluter and center it at the bottom of the view
+const saluter3 = new TogglingSaluter('Ciao Mondo!', 'Addio, Mondo!')
 
-		<canvas id="animated-gif" width="300px" height="300px">
-		</canvas>
+saluter3.x = (view.width - saluter3.width) / 2
+saluter3.y = (view.height * 5 / 3 - saluter3.height) / 2
 
-		<p><a href="scripts/mouth-frames.js">code</a></p>
-	</article>
+// add the saluter to the view
+view.add(saluter3)
+
+// and that's it</code></pre>
+
+		<h2>More examples</h2>
+
+		<article>
+			<h3>Draggable Body</h3>
+
+			<p>A body with draggable parts</p>
+
+			<canvas id="draggable-body" width="300px" height="300px">
+			</canvas>
+
+			<p><a href="scripts/draggable-body.js">code</a></p>
+		</article>
+
+		<article>
+			<h3>Rotating Image</h3>
+
+			<p>An infinitely rotating image</p>
+
+			<canvas id="rotating-image" width="300px" height="300px">
+			</canvas>
+
+			<p><a href="scripts/rotating-image.js">code</a></p>
+		</article>
+
+		<article>
+			<h3>Reactive Box</h3>
+
+			<p>A box that reacts on click</p>
+
+			<canvas id="reactive-box" width="300px" height="300px">
+			</canvas>
+
+			<p><a href="scripts/reactive-box.js">code</a></p>
+		</article>
+
+		<article>
+			<h3>Vertical Slider</h3>
+
+			<p>A slider that updates the knob value when dragging it</p>
+
+			<canvas id="vertical-slider" width="300px" height="300px">
+			</canvas>
+
+			<p><a href="scripts/vertical-slider.js">code</a></p>
+		</article>
+
+		<article>
+			<h3>Movable Box</h3>
+
+			<p>A box that moves with the keyboard: 'W' moves UP, 'S' moves DOWN, 'A' moves LEFT, and 'D' moves RIGHT</p>
+
+			<canvas id="movable-box" width="300px" height="300px">
+			</canvas>
+
+			<p><a href="scripts/movable-box.js">code</a></p>
+		</article>
+
+		<article>
+			<h3>Rotating Cube</h3>
+
+			<p>An infinitely rotating cube</p>
+
+			<canvas id="rotating-cube" width="300px" height="300px">
+			</canvas>
+
+			<p><a href="scripts/rotating-cube.js">code</a></p>
+		</article>
+
+		<article>
+			<h3>Mouth Frames</h3>
+
+			<p>Mouth frames rendered sequentially to produce an animation</p>
+
+			<canvas id="animated-gif" width="300px" height="300px">
+			</canvas>
+
+			<p><a href="scripts/mouth-frames.js">code</a></p>
+		</article>
+
+		<article>
+			<h3>Counter Up</h3>
+
+			<p>A box that counts up on click and changes the cursor on mouse over</p>
+
+			<canvas id="counter-up" width="300px" height="300px">
+			</canvas>
+
+			<p><a href="scripts/counter-up.js">code</a></p>
+		</article>
+	</main>
 
 	<footer>
 		<p>
-			<a href="https://github.com/b00tc4mp/wings" title="github repository"><img class="icon"
+			<a href="https://github.com/b00tc4mp/wings" title="github repository" target="_blank"><img class="icon"
 					src="images/github.png"></a>
-			<a href="https://www.npmjs.com/package/@b00tc4mp/wings" title="npm package"><img class="icon"
-					src="images/npm.png"></a>
+			<a href="https://www.npmjs.com/package/@b00tc4mp/wings" title="npm package" target="_blank"><img
+					class="icon" src="images/npm.png"></a>
 		</p>
 	</footer>
+
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
 
 	<script src="libs/tri.js"></script>
 	<script src="wings.js"></script>
@@ -119,6 +247,8 @@
 	<script src="scripts/movable-box.js"></script>
 	<script src="scripts/rotating-cube.js"></script>
 	<script src="scripts/mouth-frames.js"></script>
+	<script src="scripts/counter-up.js"></script>
+	<script src="scripts/toggling-saluter.js"></script>
 </body>
 
 </html>
