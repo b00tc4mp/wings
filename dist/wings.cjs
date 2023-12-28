@@ -1,10 +1,10 @@
 /**
  * Wings JS
  * 
- * An Object-Oriented Component-based UI Library for Canvas built in JavaScript (inspired by Java Swing).
+ * Object-Oriented Component-based UI Library for Canvas built in JavaScript (inspired by Java Swing).
  * 
  * @author manuelbarzi
- * @version 1.1.0
+ * @version 1.1.1
  */
 const Wings = (() => {
     class Component {
@@ -92,6 +92,7 @@ const Wings = (() => {
         mouseDown(event) {
             if (this.visible) {
                 if (this.isPointed(event.x, event.y)) {
+                    event.originalEvent.preventDefault()
                     this.mouse.pressed = true
                     this.fireEvent('MouseDown', event)
                 }
@@ -128,6 +129,7 @@ const Wings = (() => {
             if (this.visible) {
                 if (this.isPointed(event.x, event.y))
                     this.fireEvent('MouseClick', event)
+
 
                 if (this.children.length > 0)
                     for (const child of this.children)
@@ -197,6 +199,8 @@ const Wings = (() => {
 
             this.x = event.clientX - rect.left
             this.y = event.clientY - rect.top
+
+            this.originalEvent = event
         }
     }
 

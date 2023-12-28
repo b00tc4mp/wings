@@ -2,7 +2,13 @@
 
 Object-oriented Component-based UI JavaScript library for HTML Canvas (inspired by Java Swing)
 
-##### Usage
+## Installation
+
+```sh
+$ npm i @b00tc4mp/wings
+```
+
+## Usage
 
 ```html
 <!-- create a canvas in html -->

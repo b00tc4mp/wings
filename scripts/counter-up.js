@@ -10,10 +10,8 @@
         constructor() {
             super()
 
-            // set the dimensions
             this.width = this.height = 50
 
-            // set colors
             this.backgroundColor = 'magenta'
             this.borderColor = 'cyan'
             this.borderWidth = 5
@@ -54,6 +52,7 @@
             cursorStyle.id = 'cursor-style'
             document.head.appendChild(cursorStyle)
         },
+
         hidePointer() {
             document.getElementById('cursor-style').remove()
         }

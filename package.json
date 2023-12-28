@@ -1,7 +1,18 @@
 {
     "name": "@b00tc4mp/wings",
     "description": "Object-oriented Component-based UI JavaScript library for HTML Canvas (inspired by Java Swing)",
-    "version": "1.1.0",
+    "keywords": [
+        "Object-oriented",
+        "Component-based",
+        "UI",
+        "library",
+        "HTML",
+        "Canvas",
+        "Java",
+        "Swing",
+        "Wings"
+    ],
+    "version": "1.1.1",
     "homepage": "https://b00tc4mp.github.io/wings",
     "repository": {
         "type": "git",

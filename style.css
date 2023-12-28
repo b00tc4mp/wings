@@ -14,6 +14,10 @@ html {
 	height: 100%
 }
 
+body {
+	padding: 1rem;
+}
+
 body,
 header,
 article,
