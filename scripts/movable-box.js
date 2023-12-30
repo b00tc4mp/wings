@@ -45,7 +45,7 @@
             })
         }
 
-        render(context) {
+        paint(context) {
             context.fillStyle = this.backgroundColor
             context.fillRect(0, 0, this.width, this.height)
             context.fillStyle = 'black'

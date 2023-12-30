@@ -48,7 +48,7 @@
 
         }
 
-        render(context) {
+        paint(context) {
             context.save()
             context.beginPath()
 

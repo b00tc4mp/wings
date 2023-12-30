@@ -28,7 +28,7 @@
             }, 1 / speed)
         }
 
-        render(context) {
+        paint(context) {
             if (this.image && this.image.loaded) {
                 context.save()
                 context.rotate(this.angle * Math.PI / 180)

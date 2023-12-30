@@ -58,11 +58,11 @@ class TogglingSaluter extends Component {
 		})
 	}
 
-	render(context) {
-		// render the base layer
-		super.render(context)
+	paint(context) {
+		// paint the base layer
+		super.paint(context)
 
-		// render the saluter value centered in the component
+		// paint the saluter value centered in the component
 		context.fillStyle = 'white'
 		context.font = this.textHeight + 'px verdana'
 		const width = context.measureText(this.salutation).width

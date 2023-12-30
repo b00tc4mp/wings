@@ -1,10 +1,10 @@
 /**
- * Wings JS
+ * Wings
  * 
  * Object-Oriented Component-based UI Library for Canvas built in JavaScript (inspired by Java Swing)
  * 
  * @author manuelbarzi
- * @version 1.1.1
+ * @version 2.0.0
  */
 const Wings = (() => {
     class Component {
@@ -20,8 +20,8 @@ const Wings = (() => {
             this.children = []
             this.visible = true
 
-            this.backgroundColor = 'Cyan'
-            this.borderColor = 'Magenta'
+            this.backgroundColor = null
+            this.borderColor = null
             this.borderWidth = 0
         }
 
@@ -167,29 +167,41 @@ const Wings = (() => {
             }
         }
 
-        triggerRender(context) {
+        beforePaint(context) {
             context.translate(this.x, this.y)
-
-            this.render(context)
-
-            if (this.children.length > 0)
-                for (const child of this.children)
-                    child.triggerRender(context)
-
-            context.translate(-this.x, -this.y)
         }
 
-        render(context) {
+        paint(context) {
             context.beginPath()
-            context.rect(0, 0, this.width, this.height)
-            context.fillStyle = this.backgroundColor
-            context.fill()
 
-            if (this.borderWidth) {
+            if (this.backgroundColor) {
+                context.rect(0, 0, this.width, this.height)
+                context.fillStyle = this.backgroundColor
+                context.fill()
+            }
+
+            if (this.borderColor) {
+                context.rect(0, 0, this.width, this.height)
                 context.lineWidth = this.borderWidth
                 context.strokeStyle = this.borderColor
                 context.stroke()
             }
+        }
+
+        afterPaint(context) {
+            context.translate(-this.x, -this.y)
+        }
+
+        paintAll(context) {
+            this.beforePaint(context)
+
+            this.paint(context)
+
+            if (this.children.length > 0)
+                for (const child of this.children)
+                    child.paintAll(context)
+
+            this.afterPaint(context)
         }
     }
 
@@ -216,6 +228,7 @@ const Wings = (() => {
 
             this.width = canvas.width
             this.height = canvas.height
+            this.backgroundColor = 'cyan'
 
             this.context = canvas.getContext('2d')
 
@@ -270,7 +283,7 @@ const Wings = (() => {
         refresh() {
             window.requestAnimFrame(() => {
                 this.context.clearRect(0, 0, self.width, self.height)
-                super.triggerRender(this.context)
+                super.paintAll(this.context)
             })
         }
     }

@@ -12,12 +12,17 @@
 	<link rel="stylesheet" href="style.css">
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+
+	<script src="libs/tri.js"></script>
+	<script src="wings.js"></script>
 </head>
 
 <body>
 	<header>
 		<p>
-			<img src="images/logo.svg" title="Wings"> <sub>1.1.1</sub>
+			<img src="images/logo.svg" title="Wings"> <sub>2.0.0</sub>
 		</p>
 
 		<h1>Wings</h1>
@@ -41,6 +46,8 @@
 			</canvas>
 
 			<!-- <p><a href="scripts/toggling-saluter.js">code</a></p> -->
+
+			<script src="scripts/toggling-saluter.js"></script>
 		</article>
 
 		<h3>Steps</h3>
@@ -90,11 +97,11 @@ class TogglingSaluter extends Component {
 		})
 	}
 
-	render(context) {
-		// render the base layer
-		super.render(context)
+	paint(context) {
+		// paint the base layer
+		super.paint(context)
 
-		// render the saluter value centered in the component
+		// paint the saluter value centered in the component
 		context.fillStyle = 'white'
 		context.font = this.textHeight + 'px verdana'
 		const width = context.measureText(this.salutation).width
@@ -153,6 +160,8 @@ view.add(saluter3)
 			</canvas>
 
 			<p><a href="scripts/draggable-body.js">code</a></p>
+
+			<script src="scripts/draggable-body.js"></script>
 		</article>
 
 		<article>
@@ -164,6 +173,8 @@ view.add(saluter3)
 			</canvas>
 
 			<p><a href="scripts/rotating-image.js">code</a></p>
+
+			<script src="scripts/rotating-image.js"></script>
 		</article>
 
 		<article>
@@ -175,6 +186,8 @@ view.add(saluter3)
 			</canvas>
 
 			<p><a href="scripts/reactive-box.js">code</a></p>
+
+			<script src="scripts/reactive-box.js"></script>
 		</article>
 
 		<article>
@@ -186,6 +199,8 @@ view.add(saluter3)
 			</canvas>
 
 			<p><a href="scripts/vertical-slider.js">code</a></p>
+
+			<script src="scripts/vertical-slider.js"></script>
 		</article>
 
 		<article>
@@ -197,6 +212,8 @@ view.add(saluter3)
 			</canvas>
 
 			<p><a href="scripts/movable-box.js">code</a></p>
+
+			<script src="scripts/movable-box.js"></script>
 		</article>
 
 		<article>
@@ -208,17 +225,21 @@ view.add(saluter3)
 			</canvas>
 
 			<p><a href="scripts/rotating-cube.js">code</a></p>
+
+			<script src="scripts/rotating-cube.js"></script>
 		</article>
 
 		<article>
 			<h3>Mouth Frames</h3>
 
-			<p>Mouth frames rendered sequentially to produce an animation</p>
+			<p>Mouth frames painted sequentially to produce an animation</p>
 
 			<canvas id="animated-gif" width="300px" height="300px">
 			</canvas>
 
 			<p><a href="scripts/mouth-frames.js">code</a></p>
+
+			<script src="scripts/mouth-frames.js"></script>
 		</article>
 
 		<article>
@@ -230,6 +251,21 @@ view.add(saluter3)
 			</canvas>
 
 			<p><a href="scripts/counter-up.js">code</a></p>
+
+			<script src="scripts/counter-up.js"></script>
+		</article>
+
+		<article>
+			<h3>Emojis Party</h3>
+
+			<p>A party of emojis</p>
+
+			<canvas id="emojis-party" width="300px" height="300px">
+			</canvas>
+
+			<p><a href="scripts/emojis-party.js">code</a></p>
+
+			<script src="scripts/emojis-party.js"></script>
 		</article>
 	</main>
 
@@ -241,21 +277,6 @@ view.add(saluter3)
 					class="icon" src="images/npm.png"></a>
 		</p>
 	</footer>
-
-	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-
-	<script src="libs/tri.js"></script>
-	<script src="wings.js"></script>
-
-	<script src="scripts/draggable-body.js"></script>
-	<script src="scripts/rotating-image.js"></script>
-	<script src="scripts/reactive-box.js"></script>
-	<script src="scripts/vertical-slider.js"></script>
-	<script src="scripts/movable-box.js"></script>
-	<script src="scripts/rotating-cube.js"></script>
-	<script src="scripts/mouth-frames.js"></script>
-	<script src="scripts/counter-up.js"></script>
-	<script src="scripts/toggling-saluter.js"></script>
 </body>
 
 </html>

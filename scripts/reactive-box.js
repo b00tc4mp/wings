@@ -22,7 +22,7 @@
             })
         }
 
-        render(context) {
+        paint(context) {
             context.beginPath()
             context.lineWidth = '5'
             context.strokeStyle = this.backgroundColor

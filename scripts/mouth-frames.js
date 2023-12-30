@@ -1,5 +1,5 @@
 /**
- * Mouth frames rendered sequentially to produce an animation
+ * Mouth frames painted sequentially to produce an animation
  */
 {
     const { View, Component } = Wings
@@ -43,7 +43,7 @@
             }, 30)
         }
 
-        render(context) {
+        paint(context) {
             if (this.loaded) {
                 context.save()
 
