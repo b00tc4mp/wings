@@ -12,7 +12,7 @@ $ npm i @b00tc4mp/wings
 
 ```html
 <!-- create a canvas in html -->
-<canvas id="view" width="300px" height="300px">
+<canvas id="toggling-saluter" width="300px" height="300px">
 ```
 
 ```js

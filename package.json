@@ -1,6 +1,6 @@
 {
     "name": "@b00tc4mp/wings",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "Object-oriented Component-based UI JavaScript library for HTML Canvas (inspired by Java Swing)",
     "keywords": [
         "Object-oriented",
@@ -30,6 +30,6 @@
     },
     "scripts": {
         "build": "node build",
-        "publish": "npm publish"
+        "deploy": "npm publish"
     }
 }

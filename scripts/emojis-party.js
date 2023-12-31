@@ -6,7 +6,7 @@
 
     const view = new View(document.getElementById('emojis-party'))
 
-    const SIZE = 100
+    const SIZE = 50
 
     class Circle extends Component {
         constructor(size, color) {
@@ -56,7 +56,7 @@
             super.paint(context)
 
             context.fillStyle = 'black'
-            context.font = '36px verdana'
+            context.font = Math.round(this.width / 3) + 'px verdana'
             const width = context.measureText('?').width
             context.fillText('?', (this.width - width) / 2, -10)
         }

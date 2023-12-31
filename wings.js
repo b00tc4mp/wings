@@ -4,7 +4,7 @@
  * Object-Oriented Component-based UI Library for Canvas built in JavaScript (inspired by Java Swing)
  * 
  * @author manuelbarzi
- * @version 2.0.0
+ * @version 2.0.1
  */
 const Wings = (() => {
     class Component {
